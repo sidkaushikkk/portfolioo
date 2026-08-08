@@ -16,13 +16,13 @@ export function LoadingScreen({ onComplete }) {
   ];
 
   const outputs = {
-    0: ["✔ Environment initialized"],
-    1: ["✔ 5 Major Projects loaded"],
-    2: ["✔ Career timeline & milestones mapped"],
-    3: ["✔ Technical skills & AI stack ready"],
-    4: ["✔ GitHub & LeetCode connected"],
-    5: ["✔ Official resume loaded"],
-    6: ["✔ Welcome to Sid Kaushik's Portfolio!"],
+    // 0: ["✔ Environment initialized"],
+    // 1: ["✔ 5 Major Projects loaded"],
+    // 2: ["✔ Career timeline & milestones mapped"],
+    // 3: ["✔ Technical skills & AI stack ready"],
+    // 4: ["✔ GitHub & LeetCode connected"],
+    // 5: ["✔ Official resume loaded"],
+    // 6: ["✔ Welcome to Sid Kaushik's Portfolio!"],
   };
 
   const handleTerminalFinished = () => {

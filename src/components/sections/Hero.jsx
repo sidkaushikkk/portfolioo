@@ -1,155 +1,185 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { EncryptedText } from "@/components/ui/encrypted-text";
-import { Notch } from "@/components/ui/notch";
-import { HeroParallax } from "@/components/ui/hero-parallax";
-import { PERSONAL_INFO, HERO_PARALLAX_PRODUCTS } from "@/data/portfolioData";
-import { ArrowRight, Sparkles, FolderGit2, Mail } from "lucide-react";
+import { PERSONAL_INFO } from "@/data/portfolioData";
+import { Github, Linkedin, Instagram } from "lucide-react";
 
-export function Hero({ startAnimation = true }) {
-  const [activeTheme, setActiveTheme] = useState("#3b82f6");
-
-  const notchItems = [
-    {
-      id: "theme",
-      label: "Accent",
-      options: [
-        { id: "#3b82f6", label: "Blue" },
-        { id: "#8b5cf6", label: "Purple" },
-        { id: "#10b981", label: "Emerald" },
-      ],
-      value: activeTheme,
-      onChange: (val) => setActiveTheme(val),
-    },
+export function Hero() {
+  const servicesList = PERSONAL_INFO.services || [
+    "SOFTWARE DEVELOPMENT",
+    "FULL STACK ENGINEERING",
+    "AI & MACHINE LEARNING",
+    "FRONTEND ARCHITECTURE",
+    "CLOUD & DATABASE SOLUTIONS",
   ];
 
+  // Repeat items for infinite marquee scrolling effect
+  const marqueeItems = [...servicesList, ...servicesList, ...servicesList];
+
   return (
-    <section id="hero" className="relative w-full pt-16 md:pt-24">
-      {/* Background glow effects */}
-      <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 h-96 w-96 rounded-full bg-blue-600/10 dark:bg-blue-600/10 blur-[120px]" />
-      <div className="pointer-events-none absolute top-40 left-1/3 h-80 w-80 rounded-full bg-purple-600/10 dark:bg-purple-600/10 blur-[100px]" />
+    <section id="hero" className="relative w-full min-h-[92vh] flex items-center justify-center p-3 sm:p-5 md:p-8 lg:p-10 select-none overflow-hidden">
+      {/* Editorial Outer Frame Card */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-[1440px] min-h-[85vh] md:min-h-[88vh] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] border border-[#c8ad8d]/30 bg-[#141416] p-4 sm:p-6 md:p-10 pb-16 sm:pb-20 md:pb-20 flex flex-col justify-between overflow-hidden shadow-2xl"
+      >
+        {/* Ambient Radial Gradient & Slatted Light Curtain Background */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#26252d]/40 via-[#141416] to-[#0b0b0d]" />
+        
+        {/* Slatted curtain shadow texture simulation */}
+        <div 
+          className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
+          style={{
+            backgroundImage: `repeating-linear-gradient(45deg, #000 0, #000 45px, transparent 45px, transparent 130px)`
+          }}
+        />
 
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-          {/* Left Column: Headline & Bio */}
-          <div className="flex flex-col items-center text-center lg:col-span-7 lg:items-start lg:text-left">
-            {/* Welcome Tag */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center space-x-2 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-[#121218]/90 px-4 py-1.5 text-xs font-medium text-neutral-800 dark:text-neutral-300 shadow-xl backdrop-blur-md"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-purple-500 dark:text-purple-400" />
-              <span>Software Engineer & AI Architect</span>
-            </motion.div>
+        {/* 1. TOP CENTER: Rounded Pill Scrolling Service/Category Strip */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="relative z-30 mx-auto w-full max-w-2xl sm:max-w-3xl overflow-hidden rounded-full border border-[#c8ad8d]/25 bg-[#202026]/80 backdrop-blur-xl py-2 px-4 shadow-lg"
+        >
+          <div className="flex w-max animate-marquee space-x-6 whitespace-nowrap">
+            {marqueeItems.map((service, idx) => (
+              <div key={idx} className="flex items-center space-x-6">
+                <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-[#c8ad8d] font-sans">
+                  {service}
+                </span>
+                <span className="text-[#c8ad8d]/50 text-xs">&bull;</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
-            {/* Encrypted Headline */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-6 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl leading-tight"
+        {/* MIDDLE ART-DIRECTED GRID COMPOSITION */}
+        <div className="relative z-10 my-auto w-full min-h-[460px] sm:min-h-[520px] md:min-h-[560px] lg:min-h-[620px] flex flex-col justify-between pt-2">
+          
+          {/* TOP ROW: Upper Left Identity & Upper Right Tagline */}
+          <div className="relative z-30 flex flex-row items-start justify-between w-full pt-2 md:pt-4 px-2 sm:px-4">
+            
+            {/* Upper Left Identity Block */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="flex flex-col space-y-1 text-left max-w-xs sm:max-w-sm md:max-w-md"
             >
-              <EncryptedText
-                text={PERSONAL_INFO.headlineEncrypted}
-                encryptedClassName="text-neutral-400 dark:text-neutral-600 font-mono"
-                revealedClassName="text-slate-900 dark:text-white font-sans"
-                revealDelayMs={15}
-                enabled={startAnimation}
-              />
-            </motion.div>
-
-            {/* Subtitle & Tagline */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-6 space-y-2"
-            >
-              <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400">
+              <h1 className="font-syne font-bold uppercase tracking-tight text-2xl sm:text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#e5d4c0] via-[#c8ad8d] to-[#b89975] leading-none drop-shadow-sm">
                 {PERSONAL_INFO.name}
-              </h2>
-              <p className="text-base text-neutral-600 dark:text-neutral-400 sm:text-xl font-medium">
-                {PERSONAL_INFO.title} &bull;{" "}
-                <span className="text-purple-600 dark:text-purple-300">{PERSONAL_INFO.tagline}</span>
+              </h1>
+              <p className="font-sans text-xs sm:text-sm md:text-base text-[#a39382] font-normal tracking-wide leading-snug">
+                {PERSONAL_INFO.subtitle}
               </p>
             </motion.div>
 
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4"
+            {/* Upper Right Tagline Block */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="flex flex-col items-end text-right space-y-0.5 max-w-[180px] sm:max-w-xs md:max-w-sm"
             >
-              <a
-                href="#projects"
-                className="group flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-blue-600/20 transition-all hover:scale-105 active:scale-95"
-              >
-                <FolderGit2 className="h-4 w-4" />
-                <span>View Projects</span>
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-              <a
-                href="#contact"
-                className="flex items-center gap-2.5 rounded-2xl border border-neutral-300 dark:border-neutral-700/80 bg-white dark:bg-neutral-900/80 px-6 py-3.5 text-sm font-semibold text-neutral-800 dark:text-neutral-200 shadow-xl backdrop-blur-md transition-all hover:border-purple-500/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-black dark:hover:text-white hover:scale-105 active:scale-95"
-              >
-                <Mail className="h-4 w-4 text-purple-500 dark:text-purple-400" />
-                <span>Contact Me</span>
-              </a>
+              <p className="font-sans text-xs sm:text-sm md:text-base text-[#b8a892] font-light tracking-wide leading-tight">
+                heyy there ,
+              </p>
+              <p className="font-sans text-xs sm:text-sm md:text-base text-[#b8a892] font-light tracking-wide leading-tight">
+                i am a software developer
+              </p>
             </motion.div>
           </div>
 
-          {/* Right Column: Hero Photo / Notch Card */}
-          <div className="flex justify-center lg:col-span-5 lg:justify-end">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="relative flex w-full max-w-sm flex-col items-center"
+          {/* OVERSIZED TYPOGRAPHY (BEHIND PORTRAIT - LAYER Z-10) */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 overflow-hidden">
+            <motion.h2 
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 0.85, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="font-syne font-black uppercase text-[#9e8668] tracking-tighter leading-none text-[11.5vw] sm:text-[12.5vw] md:text-[13vw] lg:text-[13.5vw] xl:text-[185px] select-none text-center w-full transform -translate-y-3 sm:-translate-y-5"
+              style={{
+                textShadow: '0 4px 25px rgba(0,0,0,0.5)'
+              }}
             >
-              <div className="relative w-full overflow-hidden rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#121218] p-3 shadow-2xl backdrop-blur-xl">
-                <div
-                  className="absolute inset-0 opacity-20 transition-colors duration-300"
-                  style={{ background: activeTheme }}
-                />
-                <div className="relative overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-700/50">
-                  <img
-                    src={PERSONAL_INFO.avatar}
-                    alt={PERSONAL_INFO.name}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop";
-                    }}
-                    className="h-88 sm:h-96 w-full object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-left">
-                    <span className="rounded-full border border-blue-500/40 bg-blue-950/80 px-2.5 py-1 text-[10px] font-mono font-semibold text-blue-300">
-                      DEVELOPER CARD
-                    </span>
-                    <h3 className="mt-1 text-xl font-bold text-white">
-                      {PERSONAL_INFO.name}
-                    </h3>
-                    <p className="text-xs text-neutral-300">
-                      Full Stack Engineer & AI Developer
-                    </p>
-                  </div>
+              DEVELOPER
+            </motion.h2>
+          </div>
+
+          {/* PORTRAIT CUTOUT (OVERLAPPING TYPOGRAPHY - LAYER Z-20) */}
+          <div className="absolute inset-0 flex items-end justify-center z-20 pointer-events-none pb-0 sm:pb-2">
+            <motion.img
+              initial={{ opacity: 0, y: 35, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              src={PERSONAL_INFO.avatar}
+              alt={PERSONAL_INFO.name}
+              className="h-[50vh] sm:h-[58vh] md:h-[64vh] lg:h-[70vh] max-h-[640px] object-contain object-bottom drop-shadow-[0_20px_45px_rgba(0,0,0,0.85)] filter contrast-[1.05]"
+            />
+          </div>
+
+          {/* BOTTOM ROW (FOREGROUND - LAYER Z-30): Social Links & Large Role Title */}
+          <div className="relative z-30 flex flex-col md:flex-row items-end justify-between w-full pb-2 md:pb-4 px-2 sm:px-4 gap-4 mt-auto">
+            
+            {/* Social Links (Lower Left) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-wrap items-center gap-2.5 sm:gap-3 pointer-events-auto"
+            >
+              <a
+                href={PERSONAL_INFO.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center space-x-2 rounded-xl border border-[#c8ad8d]/30 bg-[#1c1b20]/90 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-medium text-[#dfcfbe] shadow-lg backdrop-blur-md transition-all hover:border-[#c8ad8d] hover:bg-[#25242a] hover:text-white"
+              >
+                <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#2563eb] text-white">
+                  <Github className="h-3.5 w-3.5" />
                 </div>
-              </div>
-              <div className="mt-4">
-                <Notch items={notchItems} position="bottom" />
-              </div>
+                <span>Sidhant Kaushik</span>
+              </a>
+
+              <a
+                href={PERSONAL_INFO.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center space-x-2 rounded-xl border border-[#c8ad8d]/30 bg-[#1c1b20]/90 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-medium text-[#dfcfbe] shadow-lg backdrop-blur-md transition-all hover:border-[#c8ad8d] hover:bg-[#25242a] hover:text-white"
+              >
+                <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#e1306c] text-white">
+                  <Linkedin className="h-3.5 w-3.5" />
+                </div>
+                <span>sidhant-kaushik</span>
+              </a>
+            </motion.div>
+
+            {/* Large Role Title (Lower Right) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-right pointer-events-auto"
+            >
+              <h3 className="font-syne font-extrabold uppercase tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-[#e5d4c0] via-[#c8ad8d] to-[#b89975] leading-none drop-shadow-md">
+                SOFTWARE DEVELOPER
+              </h3>
             </motion.div>
           </div>
         </div>
-      </div>
 
-      {/* Hero Parallax Section */}
-      <div className="mt-10">
-        <HeroParallax products={HERO_PARALLAX_PRODUCTS} />
-      </div>
+        {/* 4. BOTTOM LONG DESCRIPTIVE PARAGRAPH (LAYER Z-30) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="relative z-30 w-full pt-4 border-t border-[#c8ad8d]/20 px-2 sm:px-4"
+        >
+          <p className="font-sans text-xs sm:text-sm md:text-base text-[#a39382] font-normal leading-relaxed text-left max-w-6xl tracking-wide">
+            demo description. Between logic and creativity lies the space where I write software. From building scalable backend architectures to shaping digital interfaces, my work revolves around clarity, structure, and high-performance execution.
+          </p>
+        </motion.div>
+
+      </motion.div>
     </section>
   );
 }

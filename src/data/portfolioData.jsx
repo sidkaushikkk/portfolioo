@@ -1,16 +1,28 @@
 import React from "react";
 
 export const PERSONAL_INFO = {
-  name: "Sid Kaushik",
-  title: "Software Engineer",
-  tagline: "AI • MERN • Problem Solver",
-  headlineEncrypted: "Building AI-powered products that solve real-world problems.",
-  bio: "Full-stack engineer passionate about building high-performance web applications, intelligent AI products, and scalable fintech systems. 200+ LeetCode problems solved with a focus on elegant code architecture.",
-  email: "sidkaushik@example.com",
-  github: "https://github.com/sidkaushik",
-  linkedin: "https://linkedin.com/in/sidkaushik",
-  leetcode: "https://leetcode.com/sidkaushik",
-  avatar: "dist/assets/photo.png",
+  name: "Sidhant Kaushik",
+  subtitle: "Turning coffee into code",
+  mainRole: "Software developer",
+  smallTagline: "heyy there ,  i am a software developer",
+  description: "demo description.",
+  title: "Software Developer",
+  tagline: "heyy there ,  i am a software developer",
+  headlineEncrypted: "Building scalable software, AI products & intuitive applications.",
+  bio: "demo description.",
+  email: "sidhantkaushik@example.com",
+  github: "https://github.com/sidhantkaushik",
+  linkedin: "https://linkedin.com/in/sidhantkaushik",
+  instagram: "https://instagram.com/sidhant_kaushik",
+  leetcode: "https://leetcode.com/sidhantkaushik",
+  avatar: "/Image/author_transparent.png",
+  services: [
+    "SOFTWARE DEVELOPMENT",
+    "FULL STACK ENGINEERING",
+    "AI & MACHINE LEARNING",
+    "FRONTEND ARCHITECTURE",
+    "CLOUD & DATABASE SOLUTIONS",
+  ],
 };
 
 export const PROJECTS = [
