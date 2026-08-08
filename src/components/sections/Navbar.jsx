@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { ResumeModal } from "@/components/ResumeModal";
 import { useTheme } from "@/context/ThemeContext";
@@ -21,7 +22,27 @@ import { PERSONAL_INFO } from "@/data/portfolioData";
 
 export function Navbar() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
+  const [showDock, setShowDock] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    const heroElement = document.getElementById("hero");
+    if (!heroElement) {
+      setShowDock(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Hide dock when Hero section is visible; show dock when scrolled past Hero
+        setShowDock(!entry.isIntersecting);
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(heroElement);
+    return () => observer.disconnect();
+  }, []);
 
   const cycleTheme = () => {
     if (theme === "system") setTheme("dark");
@@ -83,7 +104,21 @@ export function Navbar() {
 
   return (
     <>
-      <FloatingDock items={navItems} />
+      <AnimatePresence>
+        {showDock && (
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 40, scale: 0.95 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-x-0 bottom-0 pointer-events-none z-50"
+          >
+            <div className="pointer-events-auto">
+              <FloatingDock items={navItems} />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <ResumeModal open={resumeModalOpen} onOpenChange={setResumeModalOpen} />
     </>
   );
