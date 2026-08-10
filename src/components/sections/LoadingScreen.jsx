@@ -44,8 +44,8 @@ export function LoadingScreen({ onComplete }) {
             <Terminal
               commands={commands}
               outputs={outputs}
-              typingSpeed={40}
-              delayBetweenCommands={550}
+              typingSpeed={20}
+              delayBetweenCommands={250}
               onComplete={handleTerminalFinished}
             />
           </div>

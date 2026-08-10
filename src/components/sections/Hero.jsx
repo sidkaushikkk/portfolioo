@@ -93,12 +93,12 @@ export function Hero() {
               transition={{ duration: 1, delay: 0.2 }}
               className="hero-oversized-text"
             >
-              DEVELOPER
+              SOFTWARE
             </motion.h2>
           </div>
 
           {/* PORTRAIT CUTOUT (OVERLAPPING TYPOGRAPHY - LAYER Z-20) */}
-          <div className="hero-portrait-wrapper">
+          {/* <div className="hero-portrait-wrapper">
             <motion.img
               initial={{ opacity: 0, y: 35, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -107,7 +107,7 @@ export function Hero() {
               alt={PERSONAL_INFO.name}
               className="hero-portrait-img"
             />
-          </div>
+          </div> */}
 
           {/* BOTTOM ROW (FOREGROUND - LAYER Z-30): Social Links & Large Role Title */}
           <div className="hero-bottom-row">
@@ -152,7 +152,7 @@ export function Hero() {
               className="hero-role-block"
             >
               <h3 className="hero-role-title">
-                SOFTWARE DEVELOPER
+                DEVELOPER
               </h3>
             </motion.div>
           </div>

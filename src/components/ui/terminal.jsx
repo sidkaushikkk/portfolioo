@@ -112,18 +112,6 @@ export function Terminal({
           </div>
         )}
 
-        {isFinished && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mt-4 flex items-center justify-between rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-3 text-xs text-emerald-300"
-          >
-            <div className="flex items-center space-x-2">
-              <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
-              <span>All assets loaded successfully. Welcome to Sid Kaushik's Portfolio!</span>
-            </div>
-          </motion.div>
-        )}
       </div>
     </div>
   );
