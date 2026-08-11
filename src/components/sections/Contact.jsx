@@ -51,9 +51,9 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mt-14 flex justify-center">
           {/* Left Column: Direct Links */}
-          <div className="flex flex-col justify-between rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-[#111116]/90 p-8 shadow-xl backdrop-blur-xl">
+          <div className="flex w-full max-w-xl flex-col justify-between rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-[#111116]/90 p-8 shadow-xl backdrop-blur-xl text-center">
             <div>
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
                 Let's build something extraordinary.
@@ -126,69 +126,6 @@ export function Contact() {
             <div className="mt-8 pt-4 border-t border-neutral-200 dark:border-neutral-800/80 text-xs text-neutral-500">
               ⚡ Typically responds within 24 hours.
             </div>
-          </div>
-
-          {/* Right Column: Contact Form */}
-          <div className="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-[#111116]/90 p-8 shadow-xl backdrop-blur-xl">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white">Send Me a Message</h3>
-            <p className="mt-1 text-xs text-neutral-600 dark:text-neutral-400">
-              Fill out the details below and I will get back to you promptly.
-            </p>
-
-            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-              <div>
-                <label className="block text-xs font-mono text-neutral-700 dark:text-neutral-300">Your Name</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Alex Morgan"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="mt-1.5 w-full rounded-xl border border-neutral-300 dark:border-neutral-800 bg-slate-50 dark:bg-[#161620] px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 transition-colors focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono text-neutral-700 dark:text-neutral-300">Your Email</label>
-                <input
-                  type="email"
-                  required
-                  placeholder="alex@company.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="mt-1.5 w-full rounded-xl border border-neutral-300 dark:border-neutral-800 bg-slate-50 dark:bg-[#161620] px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 transition-colors focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono text-neutral-700 dark:text-neutral-300">Message</label>
-                <textarea
-                  rows={4}
-                  required
-                  placeholder="Hello Sid, I'd like to discuss a project..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="mt-1.5 w-full rounded-xl border border-neutral-300 dark:border-neutral-800 bg-slate-50 dark:bg-[#161620] px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 transition-colors focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 py-3.5 text-sm font-semibold text-white shadow-xl shadow-purple-600/20 transition-all hover:scale-[1.02] active:scale-98"
-              >
-                {submitted ? (
-                  <>
-                    <CheckCircle2 className="h-4 w-4 text-emerald-300" />
-                    <span>Message Sent Successfully!</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-4 w-4" />
-                    <span>Send Message</span>
-                  </>
-                )}
-              </button>
-            </form>
           </div>
         </div>
       </div>
