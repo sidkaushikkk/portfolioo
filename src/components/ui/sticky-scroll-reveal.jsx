@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useMotionValueEvent, useScroll, motion } from "framer-motion";
+import { useMotionValueEvent, useScroll, useTransform, motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export function StickyScroll({ content, contentClassName }) {
@@ -11,80 +11,167 @@ export function StickyScroll({ content, contentClassName }) {
   });
   const cardLength = content.length;
 
+  // Internal vertical translation for the categories track (0% to -68%)
+  const categoryTrackY = useTransform(scrollYProgress, [0, 1], ["0%", "-68%"]);
+
+  // Subtle Y-parallax for right visual panel
+  const rightPanelY = useTransform(scrollYProgress, [0, 1], [-10, 10]);
+
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
-    const closestBreakpointIndex = cardsBreakpoints.reduce(
-      (acc, breakpoint, index) => {
-        const distance = Math.abs(latest - breakpoint);
-        if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
-          return index;
-        }
-        return acc;
-      },
-      0
+    const step = 1 / (cardLength - 1);
+    const index = Math.min(
+      cardLength - 1,
+      Math.max(0, Math.round(latest / step))
     );
-    setActiveCard(closestBreakpointIndex);
+    setActiveCard(index);
   });
 
   return (
-    <div
-      className="relative flex justify-center rounded-3xl border border-neutral-200 dark:border-neutral-800/80 bg-white/80 dark:bg-[#0f172a]/60 p-6 md:p-12 shadow-2xl backdrop-blur-xl transition-colors duration-500"
-      ref={ref}
-    >
-      <div className="relative flex w-full max-w-6xl flex-col gap-10 md:flex-row md:items-start md:justify-between">
-        {/* Left timeline text content */}
-        <div className="relative flex-1 px-2 md:px-4">
-          <div className="max-w-2xl">
-            {content.map((item, index) => (
-              <div key={item.title + index} className="my-16 md:my-24 first:mt-0 last:mb-12">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{
-                    opacity: activeCard === index ? 1 : 0.35,
-                    x: activeCard === index ? 0 : -10,
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="flex items-center space-x-3 mb-2">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full border border-purple-500/40 bg-purple-500/20 text-xs font-bold text-purple-600 dark:text-purple-300">
-                      0{index + 1}
-                    </span>
-                    <span className="text-xs font-mono tracking-wider text-neutral-500 dark:text-neutral-400 uppercase">
-                      {item.badge || "Milestone"}
-                    </span>
-                  </div>
-                  <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 md:text-4xl">
-                    {item.title}
-                  </h2>
-                  <p className="mt-4 text-base leading-relaxed text-neutral-600 dark:text-slate-400 md:text-lg">
-                    {item.description}
-                  </p>
-                  {item.tech && (
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {item.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-md border border-neutral-200 dark:border-neutral-700 bg-slate-100 dark:bg-neutral-800/60 px-2.5 py-1 text-xs text-neutral-800 dark:text-neutral-300 font-mono"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              </div>
-            ))}
-          </div>
-        </div>
+    <div ref={ref} className="relative h-[260vh] w-full">
+      {/* Sticky Viewport Window (approx 55vh-60vh, shows ~3 categories at once) */}
+      <div className="sticky top-[18vh] mx-auto flex h-[60vh] max-h-[560px] min-h-[460px] w-full max-w-6xl items-center justify-between overflow-hidden rounded-3xl border border-neutral-200 dark:border-neutral-800/80 bg-white/80 dark:bg-[#0f172a]/60 p-6 md:p-8 shadow-2xl backdrop-blur-xl transition-colors duration-500">
+        <div className="relative flex h-full w-full flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          
+          {/* Left Timeline Viewport with Internal Track */}
+          <div className="relative h-full flex-1 overflow-hidden px-2 md:pl-8 md:pr-4">
+            {/* Scroll progress line on left edge */}
+            <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-neutral-200/50 dark:bg-neutral-800/60 rounded-full overflow-hidden hidden md:block z-10">
+              <motion.div
+                className="w-full bg-gradient-to-b from-purple-500 via-blue-500 to-emerald-500 origin-top h-full"
+                style={{ scaleY: scrollYProgress }}
+              />
+            </div>
 
-        {/* Right sticky visual preview container */}
-        <div
-          className={cn(
-            "sticky top-24 hidden h-80 w-full rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-slate-900 dark:bg-[#12121a] overflow-hidden shadow-2xl md:block md:w-96 shrink-0",
-            contentClassName
-          )}
-        >
-          {content[activeCard].content ?? null}
+            {/* Internal Categories Track translating vertically */}
+            <motion.div style={{ y: categoryTrackY }} className="space-y-8 py-2 max-w-2xl">
+              {content.map((item, index) => {
+                const isActive = activeCard === index;
+                return (
+                  <div key={item.title + index} className="py-2">
+                    <motion.div
+                      animate={{
+                        opacity: isActive ? 1 : 0.28,
+                        x: isActive ? 0 : -8,
+                        scale: isActive ? 1 : 0.98,
+                      }}
+                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      {/* Badge & Number */}
+                      <div className="flex items-center space-x-3 mb-1.5">
+                        <motion.span
+                          animate={{
+                            scale: isActive ? 1.15 : 1,
+                            borderColor: isActive ? "rgba(168, 85, 247, 0.8)" : "rgba(168, 85, 247, 0.3)",
+                            backgroundColor: isActive ? "rgba(168, 85, 247, 0.25)" : "rgba(168, 85, 247, 0.1)",
+                            boxShadow: isActive ? "0 0 16px -2px rgba(168, 85, 247, 0.5)" : "0 0 0px transparent",
+                          }}
+                          transition={{ duration: 0.35, ease: "easeOut" }}
+                          className="flex h-6 w-6 items-center justify-center rounded-full border text-[11px] font-bold text-purple-600 dark:text-purple-300"
+                        >
+                          0{index + 1}
+                        </motion.span>
+                        <motion.span
+                          animate={{ opacity: isActive ? 1 : 0.6 }}
+                          className="text-[11px] font-mono tracking-wider text-neutral-500 dark:text-neutral-400 uppercase"
+                        >
+                          {item.badge || "Milestone"}
+                        </motion.span>
+                      </div>
+
+                      {/* Heading */}
+                      <motion.h2
+                        animate={{ y: isActive ? 0 : 4 }}
+                        transition={{ duration: 0.35, delay: isActive ? 0.04 : 0 }}
+                        className="text-xl font-bold text-slate-900 dark:text-slate-100 md:text-3xl"
+                      >
+                        {item.title}
+                      </motion.h2>
+
+                      {/* Description */}
+                      <motion.p
+                        animate={{ y: isActive ? 0 : 6 }}
+                        transition={{ duration: 0.35, delay: isActive ? 0.08 : 0 }}
+                        className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-slate-400 md:text-base"
+                      >
+                        {item.description}
+                      </motion.p>
+
+                      {/* Tech Skill Tags */}
+                      {item.tech && (
+                        <div className="mt-3 flex flex-wrap gap-1.5">
+                          {item.tech.map((t, idx) => (
+                            <motion.span
+                              key={t}
+                              animate={{
+                                opacity: isActive ? 1 : 0.45,
+                                y: isActive ? 0 : 6,
+                                scale: isActive ? 1 : 0.94,
+                              }}
+                              transition={{
+                                duration: 0.3,
+                                delay: isActive ? 0.12 + idx * 0.04 : 0,
+                                ease: "easeOut",
+                              }}
+                              className="rounded-md border border-neutral-200 dark:border-neutral-700 bg-slate-100 dark:bg-neutral-800/60 px-2.5 py-0.5 text-xs text-neutral-800 dark:text-neutral-300 font-mono transition-colors hover:border-purple-500/50 hover:text-purple-300"
+                            >
+                              {t}
+                            </motion.span>
+                          ))}
+                        </div>
+                      )}
+                    </motion.div>
+                  </div>
+                );
+              })}
+            </motion.div>
+          </div>
+
+          {/* Right Sticky Visual Preview Container */}
+          <motion.div
+            style={{ y: rightPanelY }}
+            animate={{
+              boxShadow: activeCard === 0
+                ? "0 0 35px -5px rgba(59, 130, 246, 0.25)"
+                : activeCard === 1
+                ? "0 0 35px -5px rgba(6, 182, 212, 0.25)"
+                : activeCard === 2
+                ? "0 0 35px -5px rgba(16, 185, 129, 0.25)"
+                : activeCard === 3
+                ? "0 0 35px -5px rgba(34, 197, 94, 0.25)"
+                : activeCard === 4
+                ? "0 0 35px -5px rgba(168, 85, 247, 0.25)"
+                : "0 0 35px -5px rgba(244, 63, 94, 0.25)",
+              borderColor: activeCard === 0
+                ? "rgba(59, 130, 246, 0.4)"
+                : activeCard === 1
+                ? "rgba(6, 182, 212, 0.4)"
+                : activeCard === 2
+                ? "rgba(16, 185, 129, 0.4)"
+                : activeCard === 3
+                ? "rgba(34, 197, 94, 0.4)"
+                : activeCard === 4
+                ? "rgba(168, 85, 247, 0.4)"
+                : "rgba(244, 63, 94, 0.4)",
+            }}
+            transition={{ duration: 0.5 }}
+            className={cn(
+              "hidden h-80 w-full rounded-2xl border bg-slate-900 dark:bg-[#12121a] overflow-hidden shadow-2xl md:block md:w-96 shrink-0 transition-colors duration-500",
+              contentClassName
+            )}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCard}
+                initial={{ opacity: 0, scale: 0.96, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96, y: -10 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="h-full w-full"
+              >
+                {content[activeCard].content ?? null}
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </div>
