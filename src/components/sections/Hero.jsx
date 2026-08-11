@@ -128,7 +128,7 @@ export function Hero() {
                 <div className="hero-badge-icon-box github">
                   <Github />
                 </div>
-                <span>Sidhant Kaushik</span>
+                <span>sidkaushikkk</span>
               </a>
 
               <a
@@ -140,7 +140,7 @@ export function Hero() {
                 <div className="hero-badge-icon-box linkedin">
                   <Linkedin />
                 </div>
-                <span>sidhant-kaushik</span>
+                <span>sidhantkaushik</span>
               </a>
             </motion.div>
 
