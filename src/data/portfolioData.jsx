@@ -10,10 +10,10 @@ export const PERSONAL_INFO = {
   tagline: "heyy there ,  i am a software developer",
   headlineEncrypted: "Building scalable software, AI products & intuitive applications.",
   bio: "demo description.",
-  email: "sidhantkaushik@example.com",
-  github: "https://github.com/sidhantkaushik",
+  email: "ksiddhant705@gmail.com",
+  github: "https://github.com/sidkaushikkk",
   linkedin: "https://linkedin.com/in/sidhantkaushik",
-  instagram: "https://instagram.com/sidhant_kaushik",
+  instagram: "https://instagram.com/sid.kaushikk_",
   leetcode: "https://leetcode.com/sidhantkaushik",
   avatar: "dist/Image/author.png",
   services: [

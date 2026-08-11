@@ -6,7 +6,7 @@ import {
   Mail,
   Linkedin,
   Github,
-  Code,
+  Instagram,
   Send,
   Sparkles,
   MessageSquare,
@@ -87,7 +87,7 @@ export function Contact() {
                   </div>
                   <div>
                     <div className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase">LinkedIn Profile</div>
-                    <div className="text-sm font-semibold">linkedin.com/in/sidkaushik</div>
+                    <div className="text-sm font-semibold">linkedin.com/in/sidhantkaushik</div>
                   </div>
                 </a>
 
@@ -102,29 +102,28 @@ export function Contact() {
                   </div>
                   <div>
                     <div className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase">GitHub Repositories</div>
-                    <div className="text-sm font-semibold">github.com/sidkaushik</div>
+                    <div className="text-sm font-semibold">github.com/sidkaushikkk</div>
                   </div>
                 </a>
 
                 <a
-                  href={PERSONAL_INFO.leetcode}
+                  href={PERSONAL_INFO.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-slate-50 dark:bg-[#161620] p-4 text-slate-900 dark:text-neutral-200 transition-all hover:border-amber-500/50 hover:bg-slate-100 dark:hover:bg-neutral-800"
+                  className="flex items-center gap-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-slate-50 dark:bg-[#161620] p-4 text-slate-900 dark:text-neutral-200 transition-all hover:border-pink-500/50 hover:bg-slate-100 dark:hover:bg-neutral-800"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 shrink-0">
-                    <Code className="h-5 w-5" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-pink-500/20 text-pink-600 dark:text-pink-400 shrink-0">
+                    <Instagram className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase">LeetCode Profile</div>
-                    <div className="text-sm font-semibold">leetcode.com/sidkaushik</div>
+                    <div className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase">Instagram Profile</div>
+                    <div className="text-sm font-semibold">instagram.com/sid.kaushikk_</div>
                   </div>
                 </a>
               </div>
             </div>
 
             <div className="mt-8 pt-4 border-t border-neutral-200 dark:border-neutral-800/80 text-xs text-neutral-500">
-              ⚡ Typically responds within 24 hours.
             </div>
           </div>
         </div>
