@@ -1,5 +1,40 @@
+/* Following Pointer Component Dedicated Styles */
+
+.follower-pointer__container {
+  position: relative;
+}
+
 .following-pointer__cursor {
+  position: absolute;
+  z-index: 50;
   top: var(--following-pointer-top);
   left: var(--following-pointer-left);
+  transform: translate(-50%, -50%);
+  user-select: none;
   pointer-events: none;
+}
+
+.following-pointer__svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  transform: rotate(-70deg);
+  stroke: #a855f7;
+  color: #a855f7;
+}
+
+.dark .following-pointer__svg {
+  stroke: #c084fc;
+  color: #c084fc;
+}
+
+.following-pointer__title-tag {
+  border-radius: 9999px;
+  background-color: #a855f7;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  color: #ffffff;
+}
+
+.dark .following-pointer__title-tag {
+  background-color: #c084fc;
 }

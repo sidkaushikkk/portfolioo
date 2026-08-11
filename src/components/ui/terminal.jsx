@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Terminal as TerminalIcon, CheckCircle2, Play } from "lucide-react";
+import { Terminal as TerminalIcon, CheckCircle2 } from "lucide-react";
+import "./terminal.css";
 
 export function Terminal({
   commands = [],
@@ -53,23 +54,23 @@ export function Terminal({
   }, [currentCommandIndex, commands, outputs, typingSpeed, delayBetweenCommands]);
 
   return (
-    <div className="mx-auto w-full max-w-2xl overflow-hidden rounded-2xl border border-neutral-800 bg-[#0d0d11]/90 shadow-2xl backdrop-blur-xl">
+    <div className="terminal__container">
       {/* Terminal Bar */}
-      <div className="flex items-center justify-between border-b border-neutral-800/80 bg-[#16161e]/80 px-4 py-3">
-        <div className="flex items-center space-x-2">
-          <div className="h-3 w-3 rounded-full bg-red-500/80" />
-          <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-          <div className="h-3 w-3 rounded-full bg-emerald-500/80" />
+      <div className="terminal__bar">
+        <div className="terminal__dots-group">
+          <div className="terminal__dot terminal__dot--red" />
+          <div className="terminal__dot terminal__dot--yellow" />
+          <div className="terminal__dot terminal__dot--green" />
         </div>
-        <div className="flex items-center space-x-2 text-xs font-medium text-neutral-400 font-mono">
-          <TerminalIcon className="h-3.5 w-3.5 text-purple-400" />
+        <div className="terminal__title">
+          <TerminalIcon className="terminal__title-icon" />
           <span>sidkaushik@portfolio ~ zsh</span>
         </div>
-        <div className="text-xs text-neutral-600 font-mono">v2.5.0</div>
+        <div className="terminal__version">v2.5.0</div>
       </div>
 
       {/* Terminal Body */}
-      <div className="min-h-[260px] p-5 font-mono text-sm leading-relaxed text-neutral-200">
+      <div className="terminal__body">
         <AnimatePresence>
           {history.map((item, idx) => (
             <motion.div
@@ -77,19 +78,19 @@ export function Terminal({
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.15 }}
-              className="mb-2"
+              className="terminal__history-item"
             >
               {item.type === "command" ? (
-                <div className="flex items-center space-x-2 text-blue-400">
-                  <span className="text-emerald-400">➜</span>
-                  <span className="text-purple-400">portfolio</span>
-                  <span className="text-neutral-500">$</span>
-                  <span className="text-neutral-100 font-semibold">{item.text}</span>
+                <div className="terminal__command-line">
+                  <span className="terminal__prompt-arrow">➜</span>
+                  <span className="terminal__prompt-name">portfolio</span>
+                  <span className="terminal__prompt-symbol">$</span>
+                  <span className="terminal__command-text">{item.text}</span>
                 </div>
               ) : (
-                <div className="flex items-center space-x-2 pl-4 text-emerald-400/90 font-medium">
+                <div className="terminal__output-line">
                   {item.text.startsWith("✔") ? (
-                    <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 inline" />
+                    <CheckCircle2 className="terminal__check-icon" />
                   ) : null}
                   <span>{item.text}</span>
                 </div>
@@ -99,19 +100,18 @@ export function Terminal({
         </AnimatePresence>
 
         {!isFinished && (
-          <div className="flex items-center space-x-2 text-blue-400">
-            <span className="text-emerald-400">➜</span>
-            <span className="text-purple-400">portfolio</span>
-            <span className="text-neutral-500">$</span>
-            <span className="text-neutral-100 font-semibold">{displayedText}</span>
+          <div className="terminal__command-line">
+            <span className="terminal__prompt-arrow">➜</span>
+            <span className="terminal__prompt-name">portfolio</span>
+            <span className="terminal__prompt-symbol">$</span>
+            <span className="terminal__command-text">{displayedText}</span>
             <motion.span
               animate={{ opacity: [1, 0] }}
               transition={{ repeat: Infinity, duration: 0.8 }}
-              className="h-4 w-2 rounded-sm bg-purple-500 inline-block ml-0.5"
+              className="terminal__cursor"
             />
           </div>
         )}
-
       </div>
     </div>
   );

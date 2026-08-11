@@ -1,0 +1,20 @@
+/* LoadingScreen Component Dedicated Styles */
+
+.loading-screen__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #09090b;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.loading-screen__container {
+  width: 100%;
+  max-width: 42rem;
+  text-align: center;
+}

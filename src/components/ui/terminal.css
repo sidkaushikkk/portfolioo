@@ -1,0 +1,134 @@
+/* Terminal Component Dedicated Styles */
+
+.terminal__container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 42rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid #262626;
+  background-color: rgba(13, 13, 17, 0.9);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.terminal__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(38, 38, 38, 0.8);
+  background-color: rgba(22, 22, 30, 0.8);
+  padding: 0.75rem 1rem;
+}
+
+.terminal__dots-group {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.terminal__dot {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 9999px;
+}
+
+.terminal__dot--red {
+  background-color: rgba(239, 68, 68, 0.8);
+}
+
+.terminal__dot--yellow {
+  background-color: rgba(234, 179, 8, 0.8);
+}
+
+.terminal__dot--green {
+  background-color: rgba(16, 185, 129, 0.8);
+}
+
+.terminal__title {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #a3a3a3;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.terminal__title-icon {
+  height: 0.875rem;
+  width: 0.875rem;
+  color: #c084fc;
+}
+
+.terminal__version {
+  font-size: 0.75rem;
+  color: #525252;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.terminal__body {
+  min-height: 260px;
+  padding: 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: #e5e5e5;
+  text-align: left;
+}
+
+.terminal__history-item {
+  margin-bottom: 0.5rem;
+}
+
+.terminal__command-line {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  color: #60a5fa;
+}
+
+.terminal__prompt-arrow {
+  color: #34d399;
+}
+
+.terminal__prompt-name {
+  color: #c084fc;
+}
+
+.terminal__prompt-symbol {
+  color: #737373;
+}
+
+.terminal__command-text {
+  color: #f5f5f5;
+  font-weight: 600;
+}
+
+.terminal__output-line {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  padding-left: 1rem;
+  color: rgba(52, 211, 153, 0.9);
+  font-weight: 500;
+}
+
+.terminal__check-icon {
+  height: 1rem;
+  width: 1rem;
+  color: #34d399;
+  flex-shrink: 0;
+  display: inline;
+}
+
+.terminal__cursor {
+  height: 1rem;
+  width: 0.5rem;
+  border-radius: 0.125rem;
+  background-color: #a855f7;
+  display: inline-block;
+  margin-left: 0.125rem;
+}

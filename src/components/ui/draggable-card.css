@@ -1,0 +1,36 @@
+/* Draggable Card Component Dedicated Styles */
+
+.draggable-card__container {
+  position: relative;
+  display: flex;
+  min-height: 500px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(38, 38, 38, 0.6);
+  background-color: rgba(13, 13, 18, 0.6);
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.draggable-card__body {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  border-radius: 1rem;
+  border: 1px solid rgba(64, 64, 64, 0.6);
+  background-color: rgba(22, 22, 30, 0.9);
+  padding: 0.375rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1), border-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.draggable-card__body:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-color: rgba(168, 85, 247, 0.4);
+}

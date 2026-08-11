@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import "./floating-dock.css";
 
 export function FloatingDock({
   items,
@@ -20,12 +21,12 @@ function FloatingDockMobile({ items, className }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={cn("relative block md:hidden fixed bottom-6 right-6 z-50", className)}>
+    <div className={cn("floating-dock-mobile", className)}>
       <AnimatePresence>
         {open && (
           <motion.div
             layoutId="nav"
-            className="absolute bottom-full mb-3 right-0 flex flex-col gap-2 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/95 dark:bg-[#121215]/95 p-3 backdrop-blur-xl shadow-2xl"
+            className="floating-dock-mobile__popover"
           >
             {items.map((item, idx) => (
               <motion.div
@@ -41,12 +42,12 @@ function FloatingDockMobile({ items, className }) {
                       item.onClick();
                       setOpen(false);
                     }}
-                    className="flex h-11 items-center gap-3 rounded-xl px-3 text-neutral-700 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-black dark:hover:text-white w-full"
+                    className="floating-dock-mobile__item"
                   >
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800/80 text-blue-500 dark:text-blue-400">
+                    <div className="floating-dock-mobile__icon-box">
                       {item.icon}
                     </div>
-                    <span className="text-sm font-medium">{item.title}</span>
+                    <span className="floating-dock-mobile__title">{item.title}</span>
                   </button>
                 ) : (
                   <a
@@ -54,12 +55,12 @@ function FloatingDockMobile({ items, className }) {
                     onClick={() => setOpen(false)}
                     target={item.href?.startsWith("http") ? "_blank" : "_self"}
                     rel="noreferrer"
-                    className="flex h-11 items-center gap-3 rounded-xl px-3 text-neutral-700 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-black dark:hover:text-white"
+                    className="floating-dock-mobile__item"
                   >
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800/80 text-blue-500 dark:text-blue-400">
+                    <div className="floating-dock-mobile__icon-box">
                       {item.icon}
                     </div>
-                    <span className="text-sm font-medium">{item.title}</span>
+                    <span className="floating-dock-mobile__title">{item.title}</span>
                   </a>
                 )}
               </motion.div>
@@ -69,9 +70,9 @@ function FloatingDockMobile({ items, className }) {
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-14 w-14 items-center justify-center rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-[#121215]/90 text-neutral-800 dark:text-neutral-200 shadow-2xl backdrop-blur-xl transition-transform active:scale-95"
+        className="floating-dock-mobile__toggle-btn"
       >
-        {open ? <X className="h-6 w-6 text-purple-500 dark:text-purple-400" /> : <Menu className="h-6 w-6 text-blue-500 dark:text-blue-400" />}
+        {open ? <X className="floating-dock-mobile__icon-purple" /> : <Menu className="floating-dock-mobile__icon-blue" />}
       </button>
     </div>
   );
@@ -84,10 +85,7 @@ function FloatingDockDesktop({ items, className }) {
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className={cn(
-        "fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex h-16 items-end gap-3 rounded-2xl border border-neutral-200/80 dark:border-neutral-800/80 bg-white/80 dark:bg-[#121215]/80 px-4 pb-3 shadow-2xl backdrop-blur-xl",
-        className
-      )}
+      className={cn("floating-dock-desktop", className)}
     >
       {items.map((item) => (
         <IconContainer mouseX={mouseX} key={item.title} {...item} />
@@ -118,7 +116,7 @@ function IconContainer({ mouseX, title, icon, href, onClick }) {
       style={{ width, height }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex items-center justify-center rounded-full border border-neutral-200/80 dark:border-neutral-700/60 bg-neutral-100/90 dark:bg-neutral-900/90 text-neutral-700 dark:text-neutral-300 transition-colors hover:border-blue-500/50 hover:bg-neutral-200 dark:hover:bg-neutral-800 hover:text-black dark:hover:text-white"
+      className="floating-dock__icon-container"
     >
       <AnimatePresence>
         {hovered && (
@@ -126,13 +124,13 @@ function IconContainer({ mouseX, title, icon, href, onClick }) {
             initial={{ opacity: 0, y: 10, x: "-50%" }}
             animate={{ opacity: 1, y: 0, x: "-50%" }}
             exit={{ opacity: 0, y: 2, x: "-50%" }}
-            className="absolute -top-10 left-1/2 whitespace-nowrap rounded-md border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#16161e] px-2.5 py-1 text-xs font-medium text-neutral-800 dark:text-neutral-200 shadow-xl backdrop-blur-md"
+            className="floating-dock__tooltip"
           >
             {title}
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="flex h-5 w-5 items-center justify-center text-blue-500 dark:text-blue-400 group-hover:text-purple-500 dark:group-hover:text-purple-400">
+      <div className="floating-dock__icon-wrapper">
         {icon}
       </div>
     </motion.div>
@@ -140,7 +138,7 @@ function IconContainer({ mouseX, title, icon, href, onClick }) {
 
   if (onClick) {
     return (
-      <button onClick={onClick} type="button">
+      <button onClick={onClick} type="button" className="floating-dock__btn-reset">
         {content}
       </button>
     );
@@ -151,6 +149,7 @@ function IconContainer({ mouseX, title, icon, href, onClick }) {
       href={href}
       target={href?.startsWith("http") ? "_blank" : "_self"}
       rel="noreferrer"
+      className="floating-dock__link-reset"
     >
       {content}
     </a>

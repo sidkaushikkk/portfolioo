@@ -19,6 +19,7 @@ import {
   Laptop,
 } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
+import "./Navbar.css";
 
 export function Navbar() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
@@ -51,9 +52,9 @@ export function Navbar() {
   };
 
   const getThemeIcon = () => {
-    if (theme === "system") return <Laptop className="h-5 w-5 text-cyan-400" />;
-    if (theme === "dark") return <Moon className="h-5 w-5 text-purple-400" />;
-    return <Sun className="h-5 w-5 text-amber-400" />;
+    if (theme === "system") return <Laptop className="navbar__icon navbar__icon--cyan" />;
+    if (theme === "dark") return <Moon className="navbar__icon navbar__icon--purple" />;
+    return <Sun className="navbar__icon navbar__icon--amber" />;
   };
 
   const getThemeTitle = () => {
@@ -63,36 +64,36 @@ export function Navbar() {
   };
 
   const navItems = [
-    { title: "Home", icon: <Home className="h-5 w-5" />, href: "#hero" },
-    { title: "About", icon: <User className="h-5 w-5" />, href: "#about" },
-    { title: "Projects", icon: <FolderGit2 className="h-5 w-5" />, href: "#projects" },
-    { title: "Skills", icon: <Cpu className="h-5 w-5" />, href: "#skills" },
-    { title: "Achievements", icon: <Award className="h-5 w-5" />, href: "#achievements" },
-    { title: "Contact", icon: <Mail className="h-5 w-5" />, href: "#contact" },
+    { title: "Home", icon: <Home className="navbar__icon" />, href: "#hero" },
+    { title: "About", icon: <User className="navbar__icon" />, href: "#about" },
+    { title: "Projects", icon: <FolderGit2 className="navbar__icon" />, href: "#projects" },
+    { title: "Skills", icon: <Cpu className="navbar__icon" />, href: "#skills" },
+    { title: "Achievements", icon: <Award className="navbar__icon" />, href: "#achievements" },
+    { title: "Contact", icon: <Mail className="navbar__icon" />, href: "#contact" },
 
     {
       title: "GitHub",
-      icon: <Github className="h-5 w-5 text-neutral-400 dark:text-neutral-300" />,
+      icon: <Github className="navbar__icon navbar__icon--github" />,
       href: PERSONAL_INFO.github,
     },
     {
       title: "LinkedIn",
-      icon: <Linkedin className="h-5 w-5 text-blue-400" />,
+      icon: <Linkedin className="navbar__icon navbar__icon--blue" />,
       href: PERSONAL_INFO.linkedin,
     },
     {
       title: "LeetCode",
-      icon: <Code className="h-5 w-5 text-amber-400" />,
+      icon: <Code className="navbar__icon navbar__icon--amber" />,
       href: PERSONAL_INFO.leetcode,
     },
     {
       title: "Email",
-      icon: <Mail className="h-5 w-5 text-emerald-400" />,
+      icon: <Mail className="navbar__icon navbar__icon--emerald" />,
       href: `mailto:${PERSONAL_INFO.email}`,
     },
     {
       title: "Resume",
-      icon: <FileText className="h-5 w-5 text-purple-400" />,
+      icon: <FileText className="navbar__icon navbar__icon--purple" />,
       onClick: () => setResumeModalOpen(true),
     },
     {
@@ -111,9 +112,9 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 bottom-0 pointer-events-none z-50"
+            className="navbar__dock-wrapper"
           >
-            <div className="pointer-events-auto">
+            <div className="navbar__dock-container">
               <FloatingDock items={navItems} />
             </div>
           </motion.div>

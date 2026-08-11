@@ -1,0 +1,46 @@
+/* Navbar Component Dedicated Styles */
+
+.navbar__dock-wrapper {
+  position: fixed;
+  inset-x: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.navbar__dock-container {
+  pointer-events: auto;
+}
+
+.navbar__icon {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.navbar__icon--cyan {
+  color: #22d3ee;
+}
+
+.navbar__icon--purple {
+  color: #c084fc;
+}
+
+.navbar__icon--amber {
+  color: #fbbf24;
+}
+
+.navbar__icon--github {
+  color: #a3a3a3;
+}
+
+.dark .navbar__icon--github {
+  color: #d4d4d4;
+}
+
+.navbar__icon--blue {
+  color: #60a5fa;
+}
+
+.navbar__icon--emerald {
+  color: #34d399;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal } from "@/components/ui/terminal";
+import "./LoadingScreen.css";
 
 export function LoadingScreen({ onComplete }) {
   const [isVisible, setIsVisible] = useState(true);
@@ -15,15 +16,7 @@ export function LoadingScreen({ onComplete }) {
     "Portfolio Ready.",
   ];
 
-  const outputs = {
-    // 0: ["✔ Environment initialized"],
-    // 1: ["✔ 5 Major Projects loaded"],
-    // 2: ["✔ Career timeline & milestones mapped"],
-    // 3: ["✔ Technical skills & AI stack ready"],
-    // 4: ["✔ GitHub & LeetCode connected"],
-    // 5: ["✔ Official resume loaded"],
-    // 6: ["✔ Welcome to Sid Kaushik's Portfolio!"],
-  };
+  const outputs = {};
 
   const handleTerminalFinished = () => {
     setTimeout(() => {
@@ -38,9 +31,9 @@ export function LoadingScreen({ onComplete }) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#09090b] px-4"
+          className="loading-screen__overlay"
         >
-          <div className="w-full max-w-2xl text-center">
+          <div className="loading-screen__container">
             <Terminal
               commands={commands}
               outputs={outputs}

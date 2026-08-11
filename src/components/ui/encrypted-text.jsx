@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import "./encrypted-text.css";
 
 const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
 
@@ -57,14 +58,14 @@ export function EncryptedText({
   }, [text, revealDelayMs, enabled]);
 
   return (
-    <span className={cn("inline-block font-mono tracking-tight", className)}>
+    <span className={cn("encrypted-text", className)}>
       {displayText.split("").map((char, idx) => {
         const isRevealed = idx < revealedCount || text[idx] === " ";
         return (
           <span
             key={idx}
             className={cn(
-              "transition-colors duration-75",
+              "encrypted-text__char",
               isRevealed ? revealedClassName : encryptedClassName
             )}
           >

@@ -9,18 +9,19 @@ import { Skills } from "@/components/sections/Skills";
 import { Achievements } from "@/components/sections/Achievements";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
+import "./App.css";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
 
   return (
     <ThemeProvider>
-      <div className="relative min-h-screen bg-slate-50 dark:bg-[#09090b] text-slate-900 dark:text-neutral-100 font-sans selection:bg-purple-500 selection:text-white transition-colors duration-300">
+      <div className="app-container">
         {/* 1. Loading Terminal Screen (Appears once) */}
         <LoadingScreen onComplete={() => setLoading(false)} />
 
         {/* Main Website Portfolio Content */}
-        <main className={`transition-opacity duration-700 ${loading ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+        <main className={`app-main ${loading ? "app-main--loading" : ""}`}>
           {/* 2. Floating Dock Navbar */}
           <Navbar />
 

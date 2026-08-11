@@ -1,3 +1,263 @@
+/* About Component Dedicated Styles */
+
+.about__section {
+  position: relative;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.about__container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 72rem;
+}
+
+.about__header {
+  text-align: center;
+}
+
+.about__title {
+  margin-top: 1rem;
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.dark .about__title {
+  color: #ffffff;
+}
+
+@media (min-width: 640px) {
+  .about__title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .about__title {
+    font-size: 3rem;
+  }
+}
+
+.about__canvas-wrapper {
+  margin-top: 3rem;
+  position: relative;
+}
+
+.about__card-container {
+  min-height: 680px;
+  border-color: #e5e7eb;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.dark .about__card-container {
+  border-color: rgba(38, 38, 38, 0.6);
+  background-color: rgba(13, 13, 18, 0.6);
+}
+
+@media (min-width: 768px) {
+  .about__card-container {
+    min-height: 780px;
+  }
+}
+
+.about__instruction {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #737373;
+  pointer-events: none;
+  user-select: none;
+}
+
+.about__instruction-icon {
+  height: 1rem;
+  width: 1rem;
+  color: #a855f7;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.dark .about__instruction-icon {
+  color: #c084fc;
+}
+
+.about__background-text-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.about__background-text {
+  font-size: 3.75rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.05em;
+}
+
+.dark .about__background-text {
+  color: #a3a3a3;
+}
+
+@media (min-width: 768px) {
+  .about__background-text {
+    font-size: 8rem;
+  }
+}
+
 .about__draggable-card {
-  z-index: var(--about-card-z-index);
+  z-index: var(--about-card-z-index, 10);
+  width: 15rem;
+  border-color: #e5e7eb;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.dark .about__draggable-card {
+  border-color: rgba(64, 64, 64, 0.6);
+  background-color: rgba(22, 22, 30, 0.9);
+}
+
+@media (min-width: 768px) {
+  .about__draggable-card {
+    width: 18rem;
+  }
+}
+
+/* Card inner gradients and borders */
+.about__card-inner {
+  border-radius: 0.75rem;
+  border-width: 1px;
+  border-style: solid;
+  padding: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.about__card-inner--hackathon {
+  background-image: linear-gradient(to bottom right, rgba(245, 158, 11, 0.2), rgba(249, 115, 22, 0.2));
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.about__card-inner--mern {
+  background-image: linear-gradient(to bottom right, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.about__card-inner--ai {
+  background-image: linear-gradient(to bottom right, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.about__card-inner--problem-solver {
+  background-image: linear-gradient(to bottom right, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2));
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.about__card-inner--leetcode {
+  background-image: linear-gradient(to bottom right, rgba(239, 68, 68, 0.2), rgba(244, 63, 94, 0.2));
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.about__card-inner--coffee {
+  background-image: linear-gradient(to bottom right, rgba(234, 179, 8, 0.2), rgba(245, 158, 11, 0.2));
+  border-color: rgba(234, 179, 8, 0.4);
+}
+
+.about__card-image-wrapper {
+  position: relative;
+  margin-bottom: 0.625rem;
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  user-select: none;
+}
+
+.dark .about__card-image-wrapper {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.about__card-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.about__card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.about__card-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: 0.025em;
+  user-select: none;
+}
+
+.dark .about__card-title {
+  color: #ffffff;
+}
+
+.about__card-subtitle {
+  margin-top: 0.125rem;
+  font-size: 11px;
+  color: #525252;
+  font-weight: 500;
+  line-height: 1.25;
+  user-select: none;
+}
+
+.dark .about__card-subtitle {
+  color: #d4d4d4;
+}
+
+.about__card-footer {
+  margin-top: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(229, 231, 235, 0.6);
+  padding-top: 0.375rem;
+  font-size: 9px;
+  color: #737373;
+  font-family: 'JetBrains Mono', monospace;
+  user-select: none;
+}
+
+.dark .about__card-footer {
+  border-top-color: rgba(255, 255, 255, 0.1);
+  color: #a3a3a3;
+}
+
+.about__card-footer-label {
+  color: #9333ea;
+  font-weight: 600;
+}
+
+.dark .about__card-footer-label {
+  color: #d8b4fe;
 }

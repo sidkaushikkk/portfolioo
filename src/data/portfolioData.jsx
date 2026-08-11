@@ -189,19 +189,19 @@ export const SKILLS_STICKY_CONTENT = [
     description: "Foundational problem solving, data structures, and object-oriented architecture built with high performance and type safety.",
     tech: ["C++", "Java", "JavaScript", "Python"],
     content: (
-      <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950 p-6 text-white font-mono">
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="w-full rounded-xl border border-blue-500/30 bg-[#090d16] p-4 shadow-xl">
-          <div className="flex items-center justify-between border-b border-blue-500/20 pb-2 text-[11px] text-blue-400">
-            <span className="font-bold">Languages & Core Math</span>
-            <span className="text-emerald-400">O(1) Memory</span>
+      <div className="skills-card skills-card--lang">
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="skills-card__inner">
+          <div className="skills-card__header-bar">
+            <span>Languages & Core Math</span>
+            <span className="skills-card__text-emerald">O(1) Memory</span>
           </div>
-          <div className="mt-3 space-y-1.5 text-xs text-blue-200">
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}><span className="text-purple-400">#include</span> &lt;vector&gt;</motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}><span className="text-pink-400">class</span> <span className="text-amber-300">Solution</span> &#123;</motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="pl-3"><span className="text-blue-400">public:</span> int solve(vector&lt;int&gt;&amp; nums) &#123;</motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.25 }} className="pl-6 text-emerald-300">// C++, Java, JS, Python mastery</motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="pl-6"><span className="text-pink-400">return</span> std::max_element(nums);</motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.35 }} className="pl-3">&#125;</motion.div>
+          <div className="skills-card__code-body">
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}><span className="skills-card__text-purple">#include</span> &lt;vector&gt;</motion.div>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}><span className="skills-card__text-pink">class</span> <span className="skills-card__text-amber">Solution</span> &#123;</motion.div>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="skills-card__indent-1"><span className="skills-card__text-blue">public:</span> int solve(vector&lt;int&gt;&amp; nums) &#123;</motion.div>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.25 }} className="skills-card__indent-2 skills-card__text-emerald">// C++, Java, JS, Python mastery</motion.div>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="skills-card__indent-2"><span className="skills-card__text-pink">return</span> std::max_element(nums);</motion.div>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.35 }} className="skills-card__indent-1">&#125;</motion.div>
             <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>&#125;</motion.div>
           </div>
         </motion.div>
@@ -214,24 +214,24 @@ export const SKILLS_STICKY_CONTENT = [
     description: "Crafting responsive, high-performance user interfaces with modern React, semantic HTML5, utility-first CSS, and smooth animations.",
     tech: ["React", "HTML5", "CSS3", "Tailwind CSS", "Responsive Design"],
     content: (
-      <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-cyan-950 via-slate-900 to-blue-950 p-6 text-white font-mono">
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="w-full rounded-xl border border-cyan-500/30 bg-[#09121a] p-4 shadow-xl">
-          <div className="flex items-center justify-between border-b border-cyan-500/20 pb-2 text-[11px] text-cyan-400">
-            <span className="font-bold">&lt;React.Component /&gt;</span>
-            <span className="text-cyan-300 font-sans text-[10px] rounded bg-cyan-950 px-2 py-0.5 border border-cyan-500/40">60 FPS Smooth</span>
+      <div className="skills-card skills-card--frontend">
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="skills-card__inner skills-card__inner--cyan">
+          <div className="skills-card__header-bar skills-card__header-bar--cyan">
+            <span>&lt;React.Component /&gt;</span>
+            <span className="skills-card__text-cyan">60 FPS Smooth</span>
           </div>
-          <div className="mt-3 space-y-2 text-xs">
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="flex items-center justify-between rounded-lg bg-neutral-900/80 p-2 border border-cyan-500/20">
-              <span className="text-cyan-300 font-bold">State & Hooks:</span>
-              <span className="text-emerald-400 font-sans text-[11px]">Active</span>
+          <div className="skills-card__row-list">
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="skills-card__row-item">
+              <span className="skills-card__text-cyan">State & Hooks:</span>
+              <span className="skills-card__text-emerald">Active</span>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="flex items-center justify-between rounded-lg bg-neutral-900/80 p-2 border border-cyan-500/20">
-              <span className="text-purple-300 font-bold">Tailwind CSS:</span>
-              <span className="text-cyan-300 font-sans text-[11px]">Utility-First</span>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="skills-card__row-item">
+              <span className="skills-card__text-purple">Tailwind CSS:</span>
+              <span className="skills-card__text-cyan">Utility-First</span>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="flex items-center justify-between rounded-lg bg-neutral-900/80 p-2 border border-cyan-500/20">
-              <span className="text-pink-300 font-bold">Responsive Layout:</span>
-              <span className="text-amber-300 font-sans text-[11px]">Mobile to 4K</span>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="skills-card__row-item">
+              <span className="skills-card__text-pink">Responsive Layout:</span>
+              <span className="skills-card__text-amber">Mobile to 4K</span>
             </motion.div>
           </div>
         </motion.div>
@@ -244,16 +244,16 @@ export const SKILLS_STICKY_CONTENT = [
     description: "Architecting secure scalable servers, asynchronous RESTful APIs, middleware pipelines, and robust JWT / OAuth authentication flows.",
     tech: ["Node.js", "Express.js", "REST APIs", "Authentication (JWT / OAuth)"],
     content: (
-      <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-emerald-950 via-slate-900 to-teal-950 p-6 text-white font-mono">
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="w-full rounded-xl border border-emerald-500/30 bg-[#07140e] p-4 shadow-xl">
-          <div className="flex items-center justify-between border-b border-emerald-500/20 pb-2 text-[11px] text-emerald-400">
-            <span className="font-bold">Express.js API Router</span>
-            <span className="text-emerald-300">HTTP 200 OK</span>
+      <div className="skills-card skills-card--backend">
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="skills-card__inner skills-card__inner--emerald">
+          <div className="skills-card__header-bar skills-card__header-bar--emerald">
+            <span>Express.js API Router</span>
+            <span className="skills-card__text-emerald">HTTP 200 OK</span>
           </div>
-          <div className="mt-3 space-y-1.5 text-xs text-emerald-200">
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}><span className="text-purple-400">app</span>.<span className="text-blue-400">post</span>(<span className="text-amber-300">"/api/v1/auth/login"</span>, async (req, res) =&gt; &#123;</motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="pl-3"><span className="text-pink-400">const</span> token = <span className="text-blue-400">jwt</span>.<span className="text-emerald-300">sign</span>(&#123; userId &#125;);</motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="pl-3">res.<span className="text-blue-400">json</span>(&#123; <span className="text-cyan-300">status: "Authenticated"</span>, token &#125;);</motion.div>
+          <div className="skills-card__code-body">
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}><span className="skills-card__text-purple">app</span>.<span className="skills-card__text-blue">post</span>(<span className="skills-card__text-amber">"/api/v1/auth/login"</span>, async (req, res) =&gt; &#123;</motion.div>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="skills-card__indent-1"><span className="skills-card__text-pink">const</span> token = <span className="skills-card__text-blue">jwt</span>.<span className="skills-card__text-emerald">sign</span>(&#123; userId &#125;);</motion.div>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="skills-card__indent-1">res.<span className="skills-card__text-blue">json</span>(&#123; <span className="skills-card__text-cyan">status: "Authenticated"</span>, token &#125;);</motion.div>
             <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>&#125;);</motion.div>
           </div>
         </motion.div>
@@ -266,22 +266,22 @@ export const SKILLS_STICKY_CONTENT = [
     description: "Designing flexible document schemas, indexing pipelines, aggregation queries, and ORM/ODM integration with MongoDB & Mongoose.",
     tech: ["MongoDB", "Mongoose"],
     content: (
-      <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-green-950 via-slate-900 to-emerald-950 p-6 text-white font-mono">
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="w-full rounded-xl border border-green-500/30 bg-[#06120b] p-4 shadow-xl">
-          <div className="flex items-center justify-between border-b border-green-500/20 pb-2 text-[11px] text-green-400">
-            <span className="font-bold">MongoDB Cluster</span>
-            <span className="text-emerald-300">Primary Node</span>
+      <div className="skills-card skills-card--db">
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="skills-card__inner skills-card__inner--green">
+          <div className="skills-card__header-bar skills-card__header-bar--green">
+            <span>MongoDB Cluster</span>
+            <span className="skills-card__text-emerald">Primary Node</span>
           </div>
-          <div className="mt-3 space-y-2 text-xs">
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }} className="rounded-lg bg-neutral-950 p-2.5 border border-green-500/20 text-[11px] text-green-200">
-              <span className="text-purple-400">const</span> UserSchema = <span className="text-amber-300">new Schema</span>(&#123; <br />
-              &nbsp;&nbsp;<span className="text-cyan-300">email</span>: String, <br />
-              &nbsp;&nbsp;<span className="text-cyan-300">role</span>: String <br />
+          <div className="skills-card__row-list">
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }} className="skills-card__row-box-lg">
+              <span className="skills-card__text-purple">const</span> UserSchema = <span className="skills-card__text-amber">new Schema</span>(&#123; <br />
+              &nbsp;&nbsp;<span className="skills-card__text-cyan">email</span>: String, <br />
+              &nbsp;&nbsp;<span className="skills-card__text-cyan">role</span>: String <br />
               &#125;);
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="flex items-center justify-between text-[10px] text-green-400">
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="skills-card__row-item">
               <span>Collection: users</span>
-              <span>Index: 100% Active</span>
+              <span className="skills-card__text-emerald">Index: 100% Active</span>
             </motion.div>
           </div>
         </motion.div>
@@ -294,24 +294,24 @@ export const SKILLS_STICKY_CONTENT = [
     description: "Streamlining engineering workflows with Git version control, GitHub collaboration, Postman API testing suite, and instant cloud deployments.",
     tech: ["Git", "GitHub", "Postman", "VS Code", "Vercel", "Render"],
     content: (
-      <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-purple-950 via-slate-900 to-indigo-950 p-6 text-white font-mono">
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="w-full rounded-xl border border-purple-500/30 bg-[#120b18] p-4 shadow-xl">
-          <div className="flex items-center justify-between border-b border-purple-500/20 pb-2 text-[11px] text-purple-400">
-            <span className="font-bold">DevOps & Cloud Pipeline</span>
-            <span className="text-emerald-400">Vercel Deployed</span>
+      <div className="skills-card skills-card--tools">
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="skills-card__inner skills-card__inner--purple">
+          <div className="skills-card__header-bar skills-card__header-bar--purple">
+            <span>DevOps & Cloud Pipeline</span>
+            <span className="skills-card__text-emerald">Vercel Deployed</span>
           </div>
-          <div className="mt-3 space-y-2 text-xs">
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="flex items-center justify-between rounded-lg bg-neutral-900/80 p-2 border border-purple-500/20">
-              <span className="text-purple-300">Git / GitHub:</span>
-              <span className="text-emerald-400 text-[11px]">main branch</span>
+          <div className="skills-card__row-list">
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="skills-card__row-item skills-card__row-item--purple">
+              <span className="skills-card__text-purple">Git / GitHub:</span>
+              <span className="skills-card__text-emerald">main branch</span>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="flex items-center justify-between rounded-lg bg-neutral-900/80 p-2 border border-purple-500/20">
-              <span className="text-amber-300">Postman Suite:</span>
-              <span className="text-cyan-300 text-[11px]">100% Tests Passed</span>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="skills-card__row-item skills-card__row-item--purple">
+              <span className="skills-card__text-amber">Postman Suite:</span>
+              <span className="skills-card__text-cyan">100% Tests Passed</span>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="flex items-center justify-between rounded-lg bg-neutral-900/80 p-2 border border-purple-500/20">
-              <span className="text-pink-300">Render / Vercel:</span>
-              <span className="text-emerald-400 text-[11px]">Production Live</span>
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="skills-card__row-item skills-card__row-item--purple">
+              <span className="skills-card__text-pink">Render / Vercel:</span>
+              <span className="skills-card__text-emerald">Production Live</span>
             </motion.div>
           </div>
         </motion.div>
@@ -324,20 +324,20 @@ export const SKILLS_STICKY_CONTENT = [
     description: "Building intelligent web applications powered by OpenAI GPT APIs, custom prompt engineering, PDF resume parsing, and ATS match optimization.",
     tech: ["OpenAI APIs", "Prompt Engineering", "Resume Parsing", "ATS Optimization"],
     content: (
-      <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-rose-950 via-slate-900 to-purple-950 p-6 text-white font-mono">
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="w-full rounded-xl border border-rose-500/30 bg-[#170912] p-4 shadow-xl">
-          <div className="flex items-center justify-between border-b border-rose-500/20 pb-2 text-[11px] text-rose-400">
-            <span className="font-bold">OpenAI GPT Engine</span>
-            <span className="text-rose-300">ATS Match: 98%</span>
+      <div className="skills-card skills-card--ai">
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="skills-card__inner skills-card__inner--rose">
+          <div className="skills-card__header-bar skills-card__header-bar--rose">
+            <span>OpenAI GPT Engine</span>
+            <span className="skills-card__text-rose">ATS Match: 98%</span>
           </div>
-          <div className="mt-3 space-y-2 text-xs">
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }} className="rounded-lg bg-neutral-900/90 p-2.5 border border-rose-500/20 text-[11px] text-rose-200">
-              <div className="text-purple-300 font-bold">Prompt Pipeline:</div>
-              <div className="mt-1 text-[10px] text-neutral-300">"Analyze candidate resume against target job description..."</div>
+          <div className="skills-card__row-list">
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }} className="skills-card__row-box-lg skills-card__row-box-lg--rose">
+              <div className="skills-card__text-purple">Prompt Pipeline:</div>
+              <div className="skills-card__text-rose">"Analyze candidate resume against target job description..."</div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="flex items-center justify-between text-[10px] text-rose-300">
+            <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="skills-card__row-item">
               <span>Resume PDF Extractions</span>
-              <span className="text-emerald-400 font-bold">Optimized</span>
+              <span className="skills-card__text-emerald">Optimized</span>
             </motion.div>
           </div>
         </motion.div>
