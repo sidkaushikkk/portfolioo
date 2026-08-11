@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import "./following-pointer.css";
 
 export function FollowerPointerCard({ children, className, title }) {
   const containerRef = useRef(null);
@@ -41,11 +42,10 @@ function FollowPointer({ x, y, title }) {
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0, opacity: 0 }}
       style={{
-        top: `${y}px`,
-        left: `${x}px`,
-        pointerEvents: "none",
+        "--following-pointer-top": `${y}px`,
+        "--following-pointer-left": `${x}px`,
       }}
-      className="absolute z-50 -translate-x-1/2 -translate-y-1/2 select-none"
+      className="following-pointer__cursor absolute z-50 -translate-x-1/2 -translate-y-1/2 select-none"
     >
       <svg
         stroke="currentColor"

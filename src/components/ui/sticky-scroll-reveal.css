@@ -1,0 +1,3 @@
+.sticky-scroll__progress-fill {
+  height: var(--sticky-scroll-progress-height);
+}

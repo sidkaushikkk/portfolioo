@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { DraggableCardContainer, DraggableCardBody } from "@/components/ui/draggable-card";
 import { DRAGGABLE_ABOUT_ITEMS } from "@/data/portfolioData";
 import { Sparkles, Move } from "lucide-react";
+import "./About.css";
 
 export function About() {
   const containerRef = useRef(null);
@@ -57,10 +58,10 @@ export function About() {
               <DraggableCardBody
                 key={item.id}
                 dragConstraints={containerRef}
-                style={{ zIndex: cardZIndices[item.id] || 10 }}
+                style={{ "--about-card-z-index": cardZIndices[item.id] || 10 }}
                 onPointerDown={() => bringToFront(item.id)}
                 onDragStart={() => bringToFront(item.id)}
-                className={`${item.className} w-60 md:w-72 border-neutral-200 dark:border-neutral-700/60 bg-white/95 dark:bg-[#16161e]/90`}
+                className={`about__draggable-card ${item.className} w-60 md:w-72 border-neutral-200 dark:border-neutral-700/60 bg-white/95 dark:bg-[#16161e]/90`}
               >
                 <div className={`rounded-xl border bg-gradient-to-br p-3 shadow-2xl backdrop-blur-xl ${item.color}`}>
                   {item.image && (

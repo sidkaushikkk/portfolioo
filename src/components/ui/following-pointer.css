@@ -1,0 +1,5 @@
+.following-pointer__cursor {
+  top: var(--following-pointer-top);
+  left: var(--following-pointer-left);
+  pointer-events: none;
+}

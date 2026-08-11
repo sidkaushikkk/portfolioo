@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import "./sticky-scroll-reveal.css";
 
 export function StickyScroll({ content, contentClassName }) {
   const [activeCard, setActiveCard] = useState(0);
@@ -86,8 +87,8 @@ export function StickyScroll({ content, contentClassName }) {
           {/* Scroll progress line on left edge */}
           <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-neutral-200/50 dark:bg-neutral-800/60 rounded-full overflow-hidden hidden md:block z-10 pointer-events-none">
             <div
-              className="w-full bg-gradient-to-b from-purple-500 via-blue-500 to-emerald-500 origin-top transition-all duration-150"
-              style={{ height: `${scrollProgress * 100}%` }}
+              className="sticky-scroll__progress-fill w-full bg-gradient-to-b from-purple-500 via-blue-500 to-emerald-500 origin-top transition-all duration-150"
+              style={{ "--sticky-scroll-progress-height": `${scrollProgress * 100}%` }}
             />
           </div>
 

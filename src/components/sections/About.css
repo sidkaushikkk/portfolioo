@@ -1,0 +1,3 @@
+.about__draggable-card {
+  z-index: var(--about-card-z-index);
+}

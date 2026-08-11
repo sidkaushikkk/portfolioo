@@ -23,6 +23,8 @@ export function ResumeModal({ children, open, onOpenChange }) {
             ul { margin: 6px 0 15px 20px; padding: 0; font-size: 13.5px; }
             li { margin-bottom: 4px; }
             .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px; }
+            .resume-summary { font-size: 13.5px; }
+            .resume-project { margin-bottom: 12px; }
           </style>
         </head>
         <body>
@@ -33,12 +35,12 @@ export function ResumeModal({ children, open, onOpenChange }) {
           </div>
 
           <div class="section-title">Professional Summary</div>
-          <p style="font-size: 13.5px;">${PERSONAL_INFO.bio}</p>
+          <p class="resume-summary">${PERSONAL_INFO.bio}</p>
 
           <div class="section-title">Featured Projects</div>
           ${PROJECTS.map(
             (p) => `
-            <div style="margin-bottom: 12px;">
+            <div class="resume-project">
               <div class="item-title"><span>${p.title}</span></div>
               <div class="item-sub">${p.techStack.join(" • ")}</div>
               <ul>
