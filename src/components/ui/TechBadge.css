@@ -1,0 +1,74 @@
+/* Tech Brand Badge Component Styles (matching user reference image) */
+
+.tech-brand-badge {
+  height : 2.8rem; 
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.625rem 1.15rem;
+  border-radius: 0.25rem; /* Clean rectangular block badge shape */
+  font-family: 'Syne', 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  user-select: none;
+  cursor: default;
+}
+
+.tech-brand-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.25);
+}
+
+.tech-brand-badge__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tech-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.tech-ex-icon {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.75rem;
+  color: #67e8f9;
+  border: 1px solid rgba(103, 232, 249, 0.6);
+  padding: 0 0.25rem;
+  border-radius: 0.2rem;
+  line-height: 1.2;
+}
+
+.tech-js-icon {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  font-size: 0.75rem;
+  color: #000000;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 0 0.25rem;
+  border-radius: 0.2rem;
+  line-height: 1.2;
+}
+
+.tech-text-icon {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  font-size: 1rem;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 0 0.25rem;
+  border-radius: 0.2rem;
+  line-height: 1.2;
+}
+
+.tech-brand-badge__label {
+  line-height: 1;
+  text-transform: uppercase;
+}

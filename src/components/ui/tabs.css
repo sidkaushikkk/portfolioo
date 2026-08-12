@@ -1,0 +1,14 @@
+/* Aceternity Tabs Component Dedicated CSS */
+
+.tabs-nav-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-visible-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-visible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
