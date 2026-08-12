@@ -40,10 +40,6 @@ export function Contact() {
       <div className="contact__container">
         {/* Section Header */}
         <div className="contact__header">
-          <div className="contact__badge">
-            <MessageSquare className="contact__badge-icon" />
-            <span>LET'S CONNECT</span>
-          </div>
           <h2 className="contact__title">
             Get In Touch
           </h2>

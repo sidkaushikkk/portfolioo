@@ -167,43 +167,32 @@ export const DRAGGABLE_ABOUT_ITEMS = [
 
 export const ACHIEVEMENTS = [
   {
-    title: "1st Place - National AI Hackathon",
-    issuer: "AI Innovation Summit 2024",
-    description: "Awarded Grand Winner among 150+ teams for engineering CypherX, an AI-powered security scanner and payload encryptor.",
-    src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop",
-    button: "View Trophy",
-    link: "https://github.com/sidkaushik/cypherx",
+    title: "AI/ML Course (Prime Batch)",
+    issuer: "Apna College",
+    description: "Completed comprehensive training in Artificial Intelligence and Machine Learning through Apna College, a well-known Indian online learning platform.",
+    src: "achievementsImage/CertificateApnCollege.png",
+    button: "View Certificate"
   },
   {
-    title: "Full Stack Web Development Certification",
-    issuer: "Meta / Coursera",
-    description: "Comprehensive certification covering React, Node.js, RESTful API design, database modeling, and cloud deployment.",
-    src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop",
-    button: "Verify Certificate",
-    link: "#",
+    title: "HackDUCS Delhi University",
+    issuer: "Dept. Of Computer Science, Delhi University",
+    description: "Secured a win at HackDUCS, a hackathon organized by the Department of Computer Science, University of Delhi.",
+    src: "achievementsImage/hackWin.png",
+    button: "Verify Certificate"
   },
   {
-    title: "Generative AI Specialist Certification",
-    issuer: "DeepLearning.AI",
-    description: "Mastery in fine-tuning LLMs, retrieval-augmented generation (RAG) pipelines, vector databases, and prompt optimization.",
-    src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
-    button: "Verify Credential",
-    link: "#",
+    title: "Orbix - IIIT Delhi",
+    issuer: "IIIT Delhi",
+    description: "Achieved top 7 position at Orbix, a programming contest hosted by IIIT Delhi.",
+    src: "public/achievementsImage/Orbix.png",
+    button: "Verify Credential"
   },
   {
-    title: "Top Performer - 200+ LeetCode Solved",
-    issuer: "LeetCode Platform",
-    description: "Achieved top rating in algorithms & data structures competitive contests. Solved 200+ dynamic programming and graph problems.",
-    src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop",
-    button: "LeetCode Profile",
-    link: "https://leetcode.com/sidkaushik",
-  },
-  {
-    title: "Best Fintech Innovation Award",
-    issuer: "FinTech Builders Summit",
-    description: "Recognized for Children of Capital, pioneering AI-driven cap table forecasting and investor update automation.",
-    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
-    button: "View Project",
-    link: "https://github.com/sidkaushik/children-of-capital",
-  },
+    title: "Matrix3.0 - IITM Hackathon",
+    issuer: "IITM",
+    description: "Went till the final round of Matrix3.0, a hackathon organized by IITM.",
+    src: "achievementsImage/Matrix.png",
+    button: "LeetCode Profile"
+  }
+  
 ];

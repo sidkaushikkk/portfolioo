@@ -11,7 +11,7 @@ export function Achievements() {
         {/* Section Header */}
         <div className="achievements__header">
           <h2 className="achievements__title">
-            Achievements & Certifications
+            Hackathons & Certifications
           </h2>
           <p className="achievements__subtitle">
             Hackathons, professional certifications and competitive programming milestones.
