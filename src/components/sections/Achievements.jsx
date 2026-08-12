@@ -10,15 +10,11 @@ export function Achievements() {
       <div className="achievements__container">
         {/* Section Header */}
         <div className="achievements__header">
-          <div className="achievements__badge">
-            <Award className="achievements__badge-icon" />
-            <span>HONORS & CREDENTIALS</span>
-          </div>
           <h2 className="achievements__title">
             Achievements & Certifications
           </h2>
           <p className="achievements__subtitle">
-            Hackathon victories, professional certifications, and competitive programming milestones.
+            Hackathons, professional certifications and competitive programming milestones.
           </p>
         </div>
 
