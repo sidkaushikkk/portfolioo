@@ -23,7 +23,11 @@ export function FollowerPointerCard({ children, className, title }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
-      className={cn("follower-pointer__container", className)}
+      className={cn(
+        "follower-pointer__container",
+        isHovered && "follower-pointer__container--hovered",
+        className
+      )}
     >
       <AnimatePresence>
         {isHovered && <FollowPointer x={point.x} y={point.y} title={title} />}

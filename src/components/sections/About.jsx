@@ -35,6 +35,9 @@ export function About() {
           <h2 className="about__title">
             About Me
           </h2>
+          <p className="about__subtitle">
+            Drag the cards over the canvas to know about me.
+          </p>
         </div>
 
         {/* Draggable Cards Playground */}

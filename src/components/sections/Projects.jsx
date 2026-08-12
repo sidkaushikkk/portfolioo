@@ -13,10 +13,6 @@ export function Projects() {
       <div className="projects__container">
         {/* Section Header */}
         <div className="projects__header">
-          <div className="projects__badge">
-            <Sparkles className="projects__badge-icon" />
-            <span>PORTFOLIO SHOWCASE</span>
-          </div>
           <h2 className="projects__title">
             Featured Projects
           </h2>

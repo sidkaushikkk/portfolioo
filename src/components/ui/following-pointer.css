@@ -4,6 +4,11 @@
   position: relative;
 }
 
+.follower-pointer__container--hovered,
+.follower-pointer__container--hovered * {
+  cursor: none !important;
+}
+
 .following-pointer__cursor {
   position: absolute;
   z-index: 50;
@@ -33,6 +38,7 @@
   padding: 0.25rem 0.625rem;
   font-size: 0.75rem;
   color: #ffffff;
+  white-space: nowrap;
 }
 
 .dark .following-pointer__title-tag {
