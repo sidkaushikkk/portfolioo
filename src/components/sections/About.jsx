@@ -79,8 +79,7 @@ export function About() {
                     {item.subtitle}
                   </p>
                   <div className="about__card-footer">
-                    <span>STATUS: ACTIVE</span>
-                    <span className="about__card-footer-label">DRAG ME</span>
+                    <span className="about__card-footer-label">DRAG THE CARD OVER THIS CONSOLE</span>
                   </div>
                 </div>
               </DraggableCardBody>
