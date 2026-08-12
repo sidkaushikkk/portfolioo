@@ -201,10 +201,6 @@ export function Skills() {
       <div className="skills__container">
         {/* Section Header */}
         <div className="skills__header">
-          <div className="skills__badge">
-            <Cpu className="skills__badge-icon" />
-            <span>CATEGORIZED TECHNICAL MASTERY</span>
-          </div>
           <h2 className="skills__title">Skills & Stack</h2>
           <p className="skills__subtitle">
             Explore my core domain expertise across frontend, backend, programming languages, databases, containerization tools, AI integrations, and computer science concepts.

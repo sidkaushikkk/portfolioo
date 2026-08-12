@@ -35,17 +35,10 @@ export default function Carousel({ slides = [] }) {
                 className="carousel__image"
               />
               <div className="carousel__image-overlay" />
-              <div className="carousel__badge">
-                <Award className="carousel__badge-icon" />
-                <span>Verified Achievement</span>
-              </div>
             </div>
 
             {/* Content info */}
             <div className="carousel__content">
-              <span className="carousel__tag">
-                Certification {current + 1} of {slides.length}
-              </span>
               <h3 className="carousel__title">
                 {slides[current].title}
               </h3>
@@ -56,19 +49,6 @@ export default function Carousel({ slides = [] }) {
               {slides[current].issuer && (
                 <div className="carousel__issuer">
                   Issued by: <span className="carousel__issuer-name">{slides[current].issuer}</span>
-                </div>
-              )}
-              {slides[current].button && (
-                <div className="carousel__action">
-                  <a
-                    href={slides[current].link || "#"}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="carousel__btn-link"
-                  >
-                    <span>{slides[current].button}</span>
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
                 </div>
               )}
             </div>
