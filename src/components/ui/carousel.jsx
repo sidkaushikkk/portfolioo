@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ExternalLink, Award } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { Modal, ModalBody, ModalContent } from "@/components/ui/animated-modal";
 import { cn } from "@/lib/utils";
 import "./carousel.css";
 
 export default function Carousel({ slides = [] }) {
   const [current, setCurrent] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleNext = () => {
     setCurrent((prev) => (prev + 1) % slides.length);
@@ -27,14 +29,21 @@ export default function Carousel({ slides = [] }) {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="carousel__grid"
           >
-            {/* Visual Image/Media */}
-            <div className="carousel__image-box">
+            {/* Visual Image/Media - Clickable to open animatedModal */}
+            <div
+              onClick={() => setSelectedImage(slides[current])}
+              className="carousel__image-box cursor-pointer group"
+              title="Click to view full image"
+            >
               <img
                 src={slides[current].src}
                 alt={slides[current].title}
                 className="carousel__image"
               />
               <div className="carousel__image-overlay" />
+              <div className="carousel__image-expand-badge">
+                <span>Click to view image</span>
+              </div>
             </div>
 
             {/* Content info */}
@@ -83,6 +92,29 @@ export default function Carousel({ slides = [] }) {
           ))}
         </div>
       </div>
+
+      {/* Animated Modal for Clicked Image */}
+      <Modal open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+        {selectedImage && (
+          <ModalBody className="carousel__modal-container">
+            <ModalContent className="p-2 sm:p-4">
+              <div className="carousel__modal-header">
+                <h3 className="carousel__modal-title">{selectedImage.title}</h3>
+                {selectedImage.issuer && (
+                  <p className="carousel__modal-issuer">Issued by: {selectedImage.issuer}</p>
+                )}
+              </div>
+              <div className="carousel__modal-image-wrapper">
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  className="carousel__modal-image"
+                />
+              </div>
+            </ModalContent>
+          </ModalBody>
+        )}
+      </Modal>
     </div>
   );
 }
