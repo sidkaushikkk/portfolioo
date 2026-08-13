@@ -366,7 +366,7 @@
   }
 }
 
-/* Portrait Cutout (Layer Z-20) */
+/* Portrait Cutout (Layer Z-20) - 105vh Height & Doubled Scale */
 .hero-portrait-wrapper {
   position: absolute;
   inset: 0;
@@ -385,28 +385,34 @@
 }
 
 .hero-portrait-img {
-  height: 50vh;
-  max-height: 640px;
+  height: 115vh;
+  max-height: none;
   object-fit: contain;
   object-position: bottom;
   filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.85)) contrast(1.05);
+  transform: scale(2.2);
+  transform-origin: bottom center;
 }
 
 @media (min-width: 640px) {
   .hero-portrait-img {
-    height: 58vh;
+    height: 115vh;
+    transform: scale(2.2);
   }
 }
 
 @media (min-width: 768px) {
   .hero-portrait-img {
-    height: 64vh;
+    height: 115vh;
+    transform: scale(2.2);
   }
 }
 
 @media (min-width: 1024px) {
   .hero-portrait-img {
-    height: 70vh;
+    height: 115vh;
+    max-height: none;
+    transform: scale(2.2);
   }
 }
 

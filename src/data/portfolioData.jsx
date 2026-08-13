@@ -15,7 +15,7 @@ export const PERSONAL_INFO = {
   linkedin: "https://linkedin.com/in/sidhantkaushik",
   instagram: "https://instagram.com/sid.kaushikk_",
   leetcode: "https://leetcode.com/sidhantkaushik",
-  avatar: "dist/Image/author.png",
+  avatar: "Image/author.png",
   services: [
     "SOFTWARE DEVELOPMENT",
     "FULL STACK ENGINEERING",
