@@ -14,10 +14,10 @@ export function Projects() {
         {/* Section Header */}
         <div className="projects__header">
           <h2 className="projects__title">
-            Featured Projects
+            Featured Major Projects
           </h2>
           <p className="projects__subtitle">
-            Hover over cards for custom pointer tracking. Click any project to open detailed architecture & challenges.
+            Hover over cards for custom pointer tracking. Click any project to open detailed architecture.
           </p>
         </div>
 
