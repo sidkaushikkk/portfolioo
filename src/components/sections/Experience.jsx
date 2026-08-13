@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { EXPERIENCES } from "@/data/portfolioData";
 import { TechBadge } from "@/components/ui/TechBadge";
-import { Briefcase, Calendar, MapPin, CheckCircle2, ChevronRight, Sparkles } from "lucide-react";
+import { Calendar, MapPin, CheckCircle2, ChevronRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import "./Experience.css";
 
 export function Experience() {
-  const [activeId, setActiveId] = useState(EXPERIENCES[0]?.id || 1);
+  // No card open by default (expands ONLY on hover)
+  const [activeId, setActiveId] = useState(null);
 
   return (
     <section id="experience" className="experience__section">
@@ -16,12 +17,15 @@ export function Experience() {
         <div className="experience__header">
           <h2 className="experience__title">Experience</h2>
           <p className="experience__subtitle">
-            Where I’ve worked, contributed and built real-world software.
+            Where I’ve worked, contributed, and built real-world software.
           </p>
         </div>
 
         {/* Skiper52 Expand-on-Hover Internship Cards */}
-        <div className="experience__grid">
+        <div
+          className="experience__grid"
+          onMouseLeave={() => setActiveId(null)}
+        >
           {EXPERIENCES.map((exp) => {
             const isExpanded = activeId === exp.id;
 
@@ -30,13 +34,11 @@ export function Experience() {
                 key={exp.id}
                 layout
                 transition={{
-                  type: "spring",
-                  stiffness: 220,
-                  damping: 24,
-                  mass: 0.8,
+                  duration: 0.65,
+                  ease: [0.16, 1, 0.3, 1],
                 }}
                 onMouseEnter={() => setActiveId(exp.id)}
-                onClick={() => setActiveId(exp.id)}
+                onClick={() => setActiveId(activeId === exp.id ? null : exp.id)}
                 onFocus={() => setActiveId(exp.id)}
                 tabIndex={0}
                 role="button"
@@ -44,7 +46,7 @@ export function Experience() {
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    setActiveId(exp.id);
+                    setActiveId(activeId === exp.id ? null : exp.id);
                   }
                 }}
                 className={cn(
@@ -52,9 +54,7 @@ export function Experience() {
                   isExpanded ? "experience__card--expanded" : "experience__card--collapsed"
                 )}
               >
-                {/* Number Badge */}
-                <div className="experience__card-badge">{exp.badge}</div>
-
+                
                 {/* Collapsed Compact State Content */}
                 {!isExpanded && (
                   <div className="experience__collapsed-view">
@@ -76,7 +76,7 @@ export function Experience() {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
                     className="experience__expanded-view"
                   >
                     {/* Header Row */}
@@ -118,7 +118,17 @@ export function Experience() {
                       </ul>
                     </div>
 
-                    {/* Technologies Used */}
+                    {/* Technologies Used (Conditionally Rendered) */}
+                    {exp.technologies && exp.technologies.length > 0 && (
+                      <div className="experience__section-block">
+                        <h5 className="experience__block-title">Technologies & Stack:</h5>
+                        <div className="experience__tech-grid">
+                          {exp.technologies.map((tech) => (
+                            <TechBadge key={tech} tech={tech} />
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </motion.div>
                 )}
               </motion.div>

@@ -41,7 +41,8 @@ export const EXPERIENCES = [
       "Designed document schemas and index pipelines in MongoDB, optimizing database query response times by 35%.",
       "Collaborated in agile sprints, technical design docs, automated unit testing, and production Vercel deployments."
     ],
-    technologies: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Git"]
+    technologies: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Git"],
+    badge: "01"
   },
   {
     id: 2,
@@ -57,8 +58,8 @@ export const EXPERIENCES = [
       "Conducted competitor analysis and market research to identify high-performing content formats, directly improving campaign strategy and reach.",
       "Optimized social media campaigns using analytics tools, resulting in a 20% increase in click-through rates and lead generation.",
     ],
-    technologies: ["JavaScript", "React", "Python", "OpenAI APIs", "REST APIs", "CSS3"],
-
+    technologies: [],
+    badge: "02"
   }
 ];
 
