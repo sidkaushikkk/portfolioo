@@ -74,7 +74,7 @@
   align-items: center;
   height: 44px;
   position: relative;
-  z-index: 30;
+  z-index: 10;
   margin-top: 1rem;
   margin-left: auto;
   margin-right: auto;
@@ -385,7 +385,7 @@
 }
 
 .hero-portrait-img {
-  height: 115vh;
+  height: 130vh;
   max-height: none;
   object-fit: contain;
   object-position: bottom;
@@ -396,21 +396,21 @@
 
 @media (min-width: 640px) {
   .hero-portrait-img {
-    height: 115vh;
+    height: 130vh;
     transform: scale(2.2);
   }
 }
 
 @media (min-width: 768px) {
   .hero-portrait-img {
-    height: 115vh;
+    height: 130vh;
     transform: scale(2.2);
   }
 }
 
 @media (min-width: 1024px) {
   .hero-portrait-img {
-    height: 115vh;
+    height: 130vh;
     max-height: none;
     transform: scale(2.2);
   }
