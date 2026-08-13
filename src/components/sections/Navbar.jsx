@@ -6,6 +6,7 @@ import { useTheme } from "@/context/ThemeContext";
 import {
   Home,
   User,
+  Briefcase,
   FolderGit2,
   Cpu,
   Award,
@@ -66,6 +67,7 @@ export function Navbar() {
   const navItems = [
     { title: "Home", icon: <Home className="navbar__icon" />, href: "#hero" },
     { title: "About", icon: <User className="navbar__icon" />, href: "#about" },
+    { title: "Experience", icon: <Briefcase className="navbar__icon" />, href: "#experience" },
     { title: "Projects", icon: <FolderGit2 className="navbar__icon" />, href: "#projects" },
     { title: "Skills", icon: <Cpu className="navbar__icon" />, href: "#skills" },
     { title: "Achievements", icon: <Award className="navbar__icon" />, href: "#achievements" },

@@ -4,6 +4,7 @@ import { LoadingScreen } from "@/components/sections/LoadingScreen";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
 import { Achievements } from "@/components/sections/Achievements";
@@ -31,19 +32,22 @@ export default function App() {
           {/* 4. About Me (Draggable Cards) */}
           <About />
 
-          {/* 5. Projects (Following Pointer Cards & Modals) */}
+          {/* 5. Experience (Skiper52 Expand on Hover) */}
+          <Experience />
+
+          {/* 6. Projects (Following Pointer Cards & Modals) */}
           <Projects />
 
-          {/* 6. Skills (Aceternity Sticky Scroll Reveal) */}
+          {/* 7. Skills (Categorized Stack & Brand Badges) */}
           <Skills />
 
-          {/* 7. Achievements & Certifications (Carousel) */}
+          {/* 8. Achievements & Certifications (Carousel) */}
           <Achievements />
 
-          {/* 8. Contact */}
+          {/* 9. Contact */}
           <Contact />
 
-          {/* 9. Footer */}
+          {/* 10. Footer */}
           <Footer />
         </main>
       </div>

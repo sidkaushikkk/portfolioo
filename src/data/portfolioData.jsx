@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 export const PERSONAL_INFO = {
   name: "Sidhant Kaushik",
@@ -25,6 +24,43 @@ export const PERSONAL_INFO = {
     "CLOUD & DATABASE SOLUTIONS",
   ],
 };
+
+export const EXPERIENCES = [
+  {
+    id: 1,
+    role: "Software Developer Intern",
+    company: "Hitachi Systems India Pvt. Ltd.",
+    location: "DLF Cybercity , Gurugram, India",
+    type: "Internship",
+    duration: "2026",
+    period: "July 2026 – Present",
+    description: "Architecting end-to-end full stack web applications, optimizing RESTful APIs, and implementing accessible React interfaces for thousands of active learners.",
+    responsibilities: [
+      "Engineered high-performance React UI modules with Tailwind CSS, custom hooks, and Framer Motion animations.",
+      "Developed secure RESTful API endpoints and middleware in Node.js & Express, reducing payload latency.",
+      "Designed document schemas and index pipelines in MongoDB, optimizing database query response times by 35%.",
+      "Collaborated in agile sprints, technical design docs, automated unit testing, and production Vercel deployments."
+    ],
+    technologies: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Git"]
+  },
+  {
+    id: 2,
+    role: "Content and Social Media Marketing Intern",
+    company: "PoolIt",
+    location: "Remote",
+    type: "Internship",
+    duration: "2025",
+    period: "Feb 2025 – May 2025",
+    description: "Produced brand-aligned creatives in collaboration with design and strategy teams, contributing to weekly performance reporting and KPI",
+    responsibilities: [
+      "Achieved a 30% increase in follower engagement by designing and executing data-driven content calendars across Instagram and LinkedIn.",
+      "Conducted competitor analysis and market research to identify high-performing content formats, directly improving campaign strategy and reach.",
+      "Optimized social media campaigns using analytics tools, resulting in a 20% increase in click-through rates and lead generation.",
+    ],
+    technologies: ["JavaScript", "React", "Python", "OpenAI APIs", "REST APIs", "CSS3"],
+
+  }
+];
 
 export const PROJECTS = [
   {
@@ -65,57 +101,6 @@ export const PROJECTS = [
     github: "https://github.com/sidkaushik/children-of-capital",
     liveDemo: "https://childrenofcapital.vercel.app",
   },
-  // {
-  //   id: "cypherx",
-  //   title: "CypherX",
-  //   shortDescription: "Next-gen AI cybersecurity suite and client-side encryption utility toolkit.",
-  //   fullDescription: "CypherX combines web security primitives with AI vulnerability scanning. It empowers developers to encrypt payload data locally, inspect API endpoint vulnerabilities, and audit dependencies before deployment.",
-  //   image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
-  //   techStack: ["React", "Web Crypto API", "Node.js", "Tailwind CSS", "Framer Motion", "Docker"],
-  //   features: [
-  //     "Client-side AES-GCM 256-bit payload encryption",
-  //     "AI-driven automated OWASP Top 10 vulnerability scanner",
-  //     "Zero-knowledge password vault & secure link generator",
-  //     "REST & GraphQL API security headers auditing",
-  //   ],
-  //   challenges: "Implementing zero-knowledge client-side encryption without compromising UI responsiveness during large file encryptions.",
-  //   github: "https://github.com/sidkaushik/cypherx",
-  //   liveDemo: "https://cypherx-security.vercel.app",
-  // },
-  // {
-  //   id: "crednova",
-  //   title: "CredNova",
-  //   shortDescription: "DeFi micro-lending & decentralized credit scoring platform on Ethereum.",
-  //   fullDescription: "CredNova introduces on-chain credit scoring for decentralized finance. By analyzing wallet transaction histories and collateral ratios, CredNova awards dynamic credit scores to enable under-collateralized loans.",
-  //   image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1200&auto=format&fit=crop",
-  //   techStack: ["React", "Solidity", "Ethers.js", "Node.js", "Tailwind CSS", "Hardhat"],
-  //   features: [
-  //     "On-chain wallet transaction reputation algorithm",
-  //     "Smart contract automated escrow & micro-loan disbursement",
-  //     "Interactive collateral risk simulator for borrowers",
-  //     "Metamask & WalletConnect seamless integration",
-  //   ],
-  //   challenges: "Optimizing smart contract gas fees for batch credit calculations and maintaining real-time oracle price feeds.",
-  //   github: "https://github.com/sidkaushik/crednova",
-  //   liveDemo: "https://crednova.vercel.app",
-  // },
-  // {
-  //   id: "portfolio",
-  //   title: "Personal Portfolio",
-  //   shortDescription: "Interactive 3D motion portfolio powered by React & Aceternity UI components.",
-  //   fullDescription: "A high-performance personal portfolio built with modern Web APIs, Framer Motion, and Aceternity UI components. Features terminal startup simulation, floating dock, sticky scroll reveal timeline, and draggable cards.",
-  //   image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop",
-  //   techStack: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Aceternity UI"],
-  //   features: [
-  //     "Aceternity UI integrated components (Terminal, Parallax, Sticky Scroll)",
-  //     "Dark theme Linear/Vercel modern aesthetic",
-  //     "60fps smooth animations with prefers-reduced-motion support",
-  //     "Interactive Resume Modal and project detail modals",
-  //   ],
-  //   challenges: "Seamlessly combining multiple complex motion physics layouts without layout shifts or frame drops.",
-  //   github: "https://github.com/sidkaushik/portfolioo",
-  //   liveDemo: "https://sidkaushik.vercel.app",
-  // },
 ];
 
 export const DRAGGABLE_ABOUT_ITEMS = [
@@ -198,5 +183,4 @@ export const ACHIEVEMENTS = [
     src: "achievementsImage/Matrix.png",
     button: "LeetCode Profile"
   }
-  
 ];
