@@ -76,11 +76,12 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="hero-tagline-block"
             >
+              
               <p className="hero-tagline-line">
-                Heyy There ,
+                Systems that scale
               </p>
               <p className="hero-tagline-line">
-                I am a software developer
+                Products that delight
               </p>
             </motion.div>
           </div>

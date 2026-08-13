@@ -4,7 +4,7 @@ export const PERSONAL_INFO = {
   name: "Sidhant Kaushik",
   subtitle: "Turning coffee into code",
   mainRole: "Software developer",
-  smallTagline: "heyy there ,  i am a software developer",
+  smallTagline: "Code that works \n Systems that scale \n Products that delight",
   description: "demo description.",
   title: "Software Developer",
   tagline: "heyy there ,  i am a software developer",
