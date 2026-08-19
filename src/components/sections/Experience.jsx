@@ -17,7 +17,7 @@ export function Experience() {
         <div className="experience__header">
           <h2 className="experience__title">Experience</h2>
           <p className="experience__subtitle">
-            Where I’ve worked, contributed, and built real-world software.
+            Hover over the cards to see where I’ve worked, contributed and built real-world software.
           </p>
         </div>
 

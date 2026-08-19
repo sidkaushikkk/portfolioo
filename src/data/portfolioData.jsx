@@ -102,6 +102,27 @@ export const PROJECTS = [
     github: "https://github.com/sidkaushik/children-of-capital",
     liveDemo: "https://childrenofcapital.vercel.app",
   },
+  {
+    id: "cypherxhub",
+    title: "CypherX",
+    shortDescription: "AI-powered cybersecurity platform that detects phishing links, malicious QR codes, and suspicious files in real time.",
+    fullDescription: "CypherX is an AI-powered cybersecurity platform designed to identify and analyze digital threats before they cause harm. It combines multi-layer risk analysis with threat intelligence to detect phishing URLs, malicious QR codes, and suspicious file payloads, while providing users with clear risk assessments and actionable security insights.",
+    image: "ProjectImages/cypherX.png",
+    techStack: ["HTML5", "CSS3","JavaScript","Node.js","Express.js","MongoDB","Chart.js","Google Safe Browsing API","Vercel"],
+    features: [
+    "Real-time URL threat analysis",
+    "Malicious QR code detection",
+    "Suspicious file and payload inspection",
+    "Multi-layer risk scoring",
+    "Google Safe Browsing threat intelligence",
+    "Live threat monitoring dashboard",
+    "Security activity and intelligence feed",
+    "Responsive cybersecurity dashboard"
+    ],
+    challenges: "Built a real-time cybersecurity platform capable of combining multiple threat-detection layers while maintaining fast analysis, reliable API communication, and a responsive user experience.",
+    github: "https://github.com/sidkaushik/cypherxhub-refactored",
+    liveDemo: "https://cypherxhub.vercel.app",
+  }
 ];
 
 export const DRAGGABLE_ABOUT_ITEMS = [
