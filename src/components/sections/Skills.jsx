@@ -43,8 +43,14 @@ export function Skills() {
 
     drawStaticCanvas();
 
+    const resizeObserver = new ResizeObserver(drawStaticCanvas);
+    resizeObserver.observe(wrapper);
     window.addEventListener("resize", drawStaticCanvas);
-    return () => window.removeEventListener("resize", drawStaticCanvas);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", drawStaticCanvas);
+    };
   }, [effectiveTheme]);
 
   const tabs = [

@@ -7,7 +7,7 @@ export function Terminal({
   commands = [],
   outputs = {},
   typingSpeed = 30,
-  delayBetweenCommands = 600,
+  delayBetweenCommands = 400,
   onComplete,
 }) {
   const [currentCommandIndex, setCurrentCommandIndex] = useState(0);
@@ -19,7 +19,7 @@ export function Terminal({
     if (currentCommandIndex >= commands.length) {
       setIsFinished(true);
       if (onComplete) {
-        const timer = setTimeout(onComplete, 800);
+        const timer = setTimeout(onComplete, 100);
         return () => clearTimeout(timer);
       }
       return;

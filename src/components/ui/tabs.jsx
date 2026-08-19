@@ -89,7 +89,7 @@ export const FadeInDiv = ({
   };
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[340px] md:h-[300px]">
+    <div className="relative w-full h-[520px] min-[420px]:h-[460px] min-[540px]:h-[400px] sm:h-[340px] md:h-[290px]">
       {tabs.map((tab, idx) => {
         const activeCard = isActive(tab);
 

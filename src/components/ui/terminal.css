@@ -3,6 +3,7 @@
 .terminal__container {
   margin-left: auto;
   margin-right: auto;
+  height: 230px;
   width: 100%;
   max-width: 42rem;
   overflow: hidden;
