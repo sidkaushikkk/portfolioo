@@ -13,7 +13,7 @@ export function Footer() {
             SID KAUSHIK
           </span>
           <p className="footer__brand-subtitle">
-            Software Engineer &bull; AI &bull; MERN &bull; Problem Solver
+            Software Development &bull; AI  &bull; Problem Solving
           </p>
         </div>
 
@@ -36,14 +36,6 @@ export function Footer() {
             <Linkedin className="footer__icon" />
           </a>
           <a
-            href={PERSONAL_INFO.leetcode}
-            target="_blank"
-            rel="noreferrer"
-            className="footer__social-link footer__social-link--leetcode"
-          >
-            <Code className="footer__icon" />
-          </a>
-          <a
             href={`mailto:${PERSONAL_INFO.email}`}
             className="footer__social-link footer__social-link--email"
           >
@@ -53,9 +45,9 @@ export function Footer() {
 
         {/* Right Copyright */}
         <div className="footer__copyright">
-          <span>&copy; {new Date().getFullYear()} Sid Kaushik. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Sidhant Kaushik.</span>
           <span className="footer__copyright-tech">
-            Built with React + Aceternity UI + Tailwind CSS
+            Built with React and Tailwind CSS.
           </span>
         </div>
       </div>

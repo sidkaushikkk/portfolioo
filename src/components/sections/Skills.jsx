@@ -58,10 +58,10 @@ export function Skills() {
             <h3 className="skills-tab-card__title">Frontend Development</h3>
           </div>
           <p className="skills-tab-card__desc">
-            Crafting responsive, high-performance user interfaces with modern React, semantic HTML5, utility-first CSS, and smooth animations.
+            Crafting responsive, high-performance user interfaces with modern React, Next.js, semantic HTML5, utility CSS, Bootstrap, and SEO optimization.
           </p>
           <div className="skills-tech-grid">
-            {["React", "HTML5", "CSS3", "Tailwind CSS", "Responsive Design"].map((tech) => (
+            {["React", "Next.js", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "SEO"].map((tech) => (
               <TechBadge key={tech} tech={tech} />
             ))}
           </div>
@@ -78,10 +78,10 @@ export function Skills() {
             <h3 className="skills-tab-card__title">Backend Development</h3>
           </div>
           <p className="skills-tab-card__desc">
-            Architecting secure scalable servers, asynchronous RESTful APIs, middleware pipelines, and robust JWT / OAuth authentication flows.
+            Architecting secure scalable servers, asynchronous RESTful APIs, middleware pipelines, authentication flows, API reliability, and production DevOps.
           </p>
           <div className="skills-tech-grid">
-            {["Node.js", "Express.js", "REST APIs", "Authentication (JWT / OAuth)"].map((tech) => (
+            {["Node.js", "Express.js", "REST APIs", "Authentication (JWT / OAuth)", "API Reliability", "Production and DevOps"].map((tech) => (
               <TechBadge key={tech} tech={tech} />
             ))}
           </div>
@@ -158,10 +158,10 @@ export function Skills() {
             <h3 className="skills-tab-card__title">AI & Advanced Technologies</h3>
           </div>
           <p className="skills-tab-card__desc">
-            Building intelligent web applications powered by OpenAI GPT APIs, custom prompt engineering, PDF resume parsing and ATS match optimization.
+            Building intelligent web applications with LLM integration, OpenAI APIs, RAG systems, prompt engineering, and automated AI workflows.
           </p>
           <div className="skills-tech-grid">
-            {["OpenAI APIs", "Prompt Engineering", "Resume Parsing", "ATS Optimization"].map((tech) => (
+            {["LLM Integration", "OpenAI APIs", "RAG systems", "Prompt Engineering", "AI workflows"].map((tech) => (
               <TechBadge key={tech} tech={tech} />
             ))}
           </div>
@@ -194,6 +194,32 @@ export function Skills() {
         </div>
       ),
     },
+    {
+      title: "Soft Skills",
+      value: "soft-skills",
+      content: (
+        <div className="skills-tab-card skills-tab-card--softskills">
+          <div className="skills-tab-card__header">
+            <span className="skills-tab-card__badge">Category 08</span>
+            <h3 className="skills-tab-card__title">Soft Skills & Practices</h3>
+          </div>
+          <p className="skills-tab-card__desc">
+            Delivering robust engineering results through agile methodologies, systematic debugging, code quality reviews, comprehensive documentation, and team collaboration.
+          </p>
+          <div className="skills-tech-grid">
+            {[
+              "Agile/Scrum methodologies",
+              "Debugging",
+              "Code Review/Testing",
+              "Technical Documentation",
+              "Team Collaboration"
+            ].map((tech) => (
+              <TechBadge key={tech} tech={tech} />
+            ))}
+          </div>
+        </div>
+      ),
+    },
   ];
 
   return (
@@ -203,7 +229,7 @@ export function Skills() {
         <div className="skills__header">
           <h2 className="skills__title">Skills & Stack</h2>
           <p className="skills__subtitle">
-            Explore my core domain expertise across frontend, backend, programming languages, databases, containerization tools, AI integrations, and computer science concepts.
+            Explore my core domain expertise across frontend, backend, programming languages, databases, containerization tools, AI integrations, computer science concepts, and soft skills.
           </p>
         </div>
 

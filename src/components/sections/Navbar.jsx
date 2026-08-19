@@ -59,7 +59,7 @@ export function Navbar() {
   };
 
   const getThemeTitle = () => {
-    if (theme === "system") return "Theme: System Preference";
+    if (theme === "system") return "Theme: System ";
     if (theme === "dark") return "Theme: Dark Mode";
     return "Theme: Light Mode";
   };
@@ -82,11 +82,6 @@ export function Navbar() {
       title: "LinkedIn",
       icon: <Linkedin className="navbar__icon navbar__icon--blue" />,
       href: PERSONAL_INFO.linkedin,
-    },
-    {
-      title: "LeetCode",
-      icon: <Code className="navbar__icon navbar__icon--amber" />,
-      href: PERSONAL_INFO.leetcode,
     },
     {
       title: "Email",

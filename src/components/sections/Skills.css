@@ -89,7 +89,8 @@
 
 /* Skills Canvas Wrapper Container */
 .skills__canvas-wrapper {
-  height:30rem;
+  min-height: 33rem;
+  height: auto;
   position: relative;
   width: 100%;
   border-radius: 1.5rem;
@@ -181,6 +182,10 @@
 
 .skills-tab-card--concepts {
   border-top: 3px solid rgba(234, 179, 8, 0.8);
+}
+
+.skills-tab-card--softskills {
+  border-top: 3px solid rgba(236, 72, 153, 0.8);
 }
 
 .skills-tab-card__header {

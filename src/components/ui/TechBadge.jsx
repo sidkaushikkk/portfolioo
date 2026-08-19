@@ -31,7 +31,7 @@ const TECH_BADGES = {
     label: "CSS3",
     icon: (
       <svg className="tech-icon fill-current text-white" viewBox="0 0 24 24">
-        <path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.625h10.457l.236-2.625H5.857l.695 7.875h8.219l-.317 3.547-2.483.672-2.488-.672-.16-1.781H6.7l.317 3.594 4.953 1.375 4.957-1.375.691-7.688H8.531z"/>
+        <path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm17.09 4.413H5.41l.213 2.622h10.125l-.255 2.716h-6.64l.213 2.622h6.176l-.417 4.542-2.61.713-2.61-.713-.173-1.954H6.845l.341 4.161 4.874 1.352 4.874-1.352 1.01-11.375z"/>
       </svg>
     ),
   },
@@ -371,8 +371,176 @@ const TECH_BADGES = {
         <path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4" />
       </svg>
     ),
+  },
+  "Bootstrap": {
+    bg: "#7952b3",
+    textColor: "#ffffff",
+    label: "BOOTSTRAP",
+    icon: (
+      <svg className="tech-icon fill-current text-white" viewBox="0 0 24 24">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.987 13.904c0 1.93-1.42 2.92-3.67 2.92H7.95V7.176h4.15c2.09 0 3.39.99 3.39 2.65 0 1.25-.79 2.08-1.92 2.37v.06c1.36.25 2.417 1.188 2.417 2.648zm-5.747-4.718h1.72c1.07 0 1.69-.47 1.69-1.32 0-.89-.66-1.34-1.74-1.34h-1.67v2.66zm0 5.38h1.99c1.19 0 1.89-.52 1.89-1.47 0-.98-.74-1.49-1.98-1.49h-1.9v2.96z"/>
+      </svg>
+    ),
+  },
+  "SEO": {
+    bg: "#059669",
+    textColor: "#ffffff",
+    label: "SEO",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        <path d="M11 8v6M8 11h6" />
+      </svg>
+    ),
+  },
+  "Next.js": {
+    bg: "#000000",
+    textColor: "#ffffff",
+    label: "NEXT.JS",
+    icon: (
+      <svg className="tech-icon fill-current text-white" viewBox="0 0 24 24">
+        <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.63 18.25l-5.69-7.44v7.44H10.1V7.75h1.96l5.52 7.22V7.75h1.84v10.5h-1.79z"/>
+      </svg>
+    ),
+  },
+  "Next js": {
+    bg: "#000000",
+    textColor: "#ffffff",
+    label: "NEXT.JS",
+    icon: (
+      <svg className="tech-icon fill-current text-white" viewBox="0 0 24 24">
+        <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.63 18.25l-5.69-7.44v7.44H10.1V7.75h1.96l5.52 7.22V7.75h1.84v10.5h-1.79z"/>
+      </svg>
+    ),
+  },
+  "API Reliability": {
+    bg: "#0284c7",
+    textColor: "#ffffff",
+    label: "API RELIABILITY",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
+  },
+  "Production and DevOps": {
+    bg: "#ea580c",
+    textColor: "#ffffff",
+    label: "PRODUCTION & DEVOPS",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <rect x="2" y="2" width="20" height="8" rx="2" />
+        <rect x="2" y="14" width="20" height="8" rx="2" />
+        <circle cx="6" cy="6" r="1" fill="currentColor" />
+        <circle cx="6" cy="18" r="1" fill="currentColor" />
+        <path d="M14 6h4M14 18h4" />
+      </svg>
+    ),
+  },
+  "LLM Integration": {
+    bg: "#8b5cf6",
+    textColor: "#ffffff",
+    label: "LLM INTEGRATION",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <rect x="4" y="4" width="16" height="16" rx="2" />
+        <rect x="9" y="9" width="6" height="6" />
+        <line x1="9" y1="1" x2="9" y2="4" />
+        <line x1="15" y1="1" x2="15" y2="4" />
+        <line x1="9" y1="20" x2="9" y2="23" />
+        <line x1="15" y1="20" x2="15" y2="23" />
+        <line x1="20" y1="9" x2="23" y2="9" />
+        <line x1="20" y1="14" x2="23" y2="14" />
+        <line x1="1" y1="9" x2="4" y2="9" />
+        <line x1="1" y1="14" x2="4" y2="14" />
+      </svg>
+    ),
+  },
+  "RAG systems": {
+    bg: "#0284c7",
+    textColor: "#ffffff",
+    label: "RAG SYSTEMS",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <ellipse cx="12" cy="5" rx="9" ry="3" />
+        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+      </svg>
+    ),
+  },
+  "AI workflows": {
+    bg: "#ec4899",
+    textColor: "#ffffff",
+    label: "AI WORKFLOWS",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <rect x="3" y="3" width="6" height="6" rx="1" />
+        <rect x="15" y="3" width="6" height="6" rx="1" />
+        <rect x="9" y="15" width="6" height="6" rx="1" />
+        <path d="M6 9v3a3 3 0 0 0 3 3h3m6-6v3a3 3 0 0 1-3 3" />
+      </svg>
+    ),
+  },
+  "Agile/Scrum methodologies": {
+    bg: "#0284c7",
+    textColor: "#ffffff",
+    label: "AGILE / SCRUM",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+      </svg>
+    ),
+  },
+  "Debugging": {
+    bg: "#e11d48",
+    textColor: "#ffffff",
+    label: "DEBUGGING",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <rect width="8" height="14" x="8" y="6" rx="4" />
+        <path d="m19 7-3 2M5 7l3 2M19 19l-3-2M5 19l3-2M20 13h-4M4 13h4M10 4l1-2M14 4l-1-2" />
+      </svg>
+    ),
+  },
+  "Code Review/Testing": {
+    bg: "#10b981",
+    textColor: "#ffffff",
+    label: "CODE REVIEW & TESTING",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+        <path d="m9 12 2 2 4-4" />
+      </svg>
+    ),
+  },
+  "Technical Documentation": {
+    bg: "#8b5cf6",
+    textColor: "#ffffff",
+    label: "TECHNICAL DOCUMENTATION",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
+      </svg>
+    ),
+  },
+  "Team Collaboration": {
+    bg: "#f59e0b",
+    textColor: "#ffffff",
+    label: "TEAM COLLABORATION",
+    icon: (
+      <svg className="tech-icon stroke-current text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
   }
-  
 };
 
 export function TechBadge({ tech }) {

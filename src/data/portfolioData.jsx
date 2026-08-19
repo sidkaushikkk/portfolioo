@@ -5,17 +5,15 @@ export const PERSONAL_INFO = {
   subtitle: "Turning coffee into code",
   mainRole: "Software developer",
   smallTagline: "Code that works \n Systems that scale \n Products that delight",
-  description: "demo description.",
   title: "Software Developer",
-  tagline: "heyy there ,  i am a software developer",
   headlineEncrypted: "Building scalable software, AI products & intuitive applications.",
   bio: "demo description.",
   email: "ksiddhant705@gmail.com",
   github: "https://github.com/sidkaushikkk",
   linkedin: "https://linkedin.com/in/sidhantkaushik",
   instagram: "https://instagram.com/sid.kaushikk_",
-  leetcode: "https://leetcode.com/sidhantkaushik",
-  avatar: "Image/author.png",
+  leetcode: "https://leetcode.com/sidkaushikkk",
+  avatar: "/Image/author.png",
   services: [
     "SOFTWARE DEVELOPMENT",
     "FULL STACK ENGINEERING",
@@ -130,7 +128,7 @@ export const DRAGGABLE_ABOUT_ITEMS = [
     id: "hackathon",
     title: "1X Hackathon Winner",
     subtitle: "HackDUCS Delhi University",
-    image: "public/Image/hackDUCSwin.jpeg",
+    image: "Image/hackDUCSwin.jpeg",
     className: "absolute top-6 left-[10%] rotate-[-4deg]",
     color: "from-amber-500/20 to-orange-500/20 border-amber-500/40",
   },
@@ -138,7 +136,7 @@ export const DRAGGABLE_ABOUT_ITEMS = [
     id: "mern",
     title: "MERN Developer",
     subtitle: "React, Node, Express, MongoDB",
-    image: "public/Image/mern.jpg",
+    image: "Image/mern.jpg",
     className: "absolute top-36 left-[22%] rotate-[6deg]",
     color: "from-blue-500/20 to-cyan-500/20 border-blue-500/40",
   },
@@ -146,7 +144,7 @@ export const DRAGGABLE_ABOUT_ITEMS = [
     id: "ai",
     title: "AI Enthusiast",
     subtitle: "LLMs, LangChain, OpenAI APIs",
-    image: "public/Image/Ai.jpeg",
+    image: "Image/Ai.jpeg",
     className: "absolute top-10 left-[42%] rotate-[-8deg]",
     color: "from-purple-500/20 to-pink-500/20 border-purple-500/40",
   },
@@ -154,7 +152,7 @@ export const DRAGGABLE_ABOUT_ITEMS = [
     id: "problem-solver",
     title: "Problem Solver",
     subtitle: "DSA, System Design, Clean Code",
-    image: "public/Image/problemSolver.jpeg",
+    image: "Image/problemSolver.jpeg",
     className: "absolute top-44 left-[58%] rotate-[5deg]",
     color: "from-emerald-500/20 to-teal-500/20 border-emerald-500/40",
   },
@@ -162,7 +160,7 @@ export const DRAGGABLE_ABOUT_ITEMS = [
     id: "leetcode",
     title: "100+ LeetCode problems Solved",
     subtitle: "Top Performer in Algorithms",
-    image: "public/Image/Leetcode.jpg",
+    image: "Image/Leetcode.jpg",
     className: "absolute top-14 right-[12%] rotate-[-3deg]",
     color: "from-red-500/20 to-rose-500/20 border-red-500/40",
   },
@@ -170,7 +168,7 @@ export const DRAGGABLE_ABOUT_ITEMS = [
     id: "coffee",
     title: "Coffee Powered",
     subtitle: "Turning Espresso into Code",
-    image: "public/Image/coffee_powered.jpeg",
+    image: "Image/coffee_powered.jpeg",
     className: "absolute top-48 right-[28%] rotate-[7deg]",
     color: "from-yellow-500/20 to-amber-500/20 border-yellow-500/40",
   }
@@ -182,27 +180,23 @@ export const ACHIEVEMENTS = [
     issuer: "Apna College",
     description: "Completed comprehensive training in Artificial Intelligence and Machine Learning through Apna College, a well-known Indian online learning platform.",
     src: "achievementsImage/CertificateApnCollege.png",
-    button: "View Certificate"
   },
   {
     title: "HackDUCS Delhi University",
     issuer: "Dept. Of Computer Science, Delhi University",
     description: "Secured a win at HackDUCS, a hackathon organized by the Department of Computer Science, University of Delhi.",
-    src: "achievementsImage/hackWin.png",
-    button: "Verify Certificate"
-  },
+    src: "achievementsImage/hackWin.png"
+    },
   {
     title: "Orbix - IIIT Delhi",
     issuer: "IIIT Delhi",
     description: "Achieved top 7 position at Orbix, a programming contest hosted by IIIT Delhi.",
-    src: "public/achievementsImage/Orbix.png",
-    button: "Verify Credential"
-  },
+    src: "achievementsImage/Orbix.png"
+    },
   {
     title: "Matrix3.0 - IITM Hackathon",
     issuer: "IITM",
     description: "Went till the final round of Matrix3.0, a hackathon organized by IITM.",
-    src: "achievementsImage/Matrix.png",
-    button: "LeetCode Profile"
-  }
+    src: "achievementsImage/Matrix.png"
+    }
 ];
