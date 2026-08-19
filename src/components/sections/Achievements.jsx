@@ -14,7 +14,7 @@ export function Achievements() {
             Hackathons & Certifications
           </h2>
           <p className="achievements__subtitle">
-            Hackathons, professional certifications and competitive programming milestones.
+            Hackathons, professional certifications and programming milestones.
           </p>
         </div>
 

@@ -44,7 +44,7 @@ export function Contact() {
             Get In Touch
           </h2>
           <p className="contact__subtitle">
-            Whether you have an exciting opportunity, a project collaboration, or just want to talk code — my inbox is always open!
+            Whether its an exciting opportunity, a project collaboration or just want to talk code — my inbox is always open!
           </p>
         </div>
 

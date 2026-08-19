@@ -58,7 +58,7 @@ export function Skills() {
             <h3 className="skills-tab-card__title">Frontend Development</h3>
           </div>
           <p className="skills-tab-card__desc">
-            Crafting responsive, high-performance user interfaces with modern React, Next.js, semantic HTML5, utility CSS, Bootstrap, and SEO optimization.
+            Crafting responsive, high-performance UI with modern React, Next.js, semantic HTML5, utility CSS, Bootstrap and SEO optimization.
           </p>
           <div className="skills-tech-grid">
             {["React", "Next.js", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "SEO"].map((tech) => (
@@ -78,7 +78,7 @@ export function Skills() {
             <h3 className="skills-tab-card__title">Backend Development</h3>
           </div>
           <p className="skills-tab-card__desc">
-            Architecting secure scalable servers, asynchronous RESTful APIs, middleware pipelines, authentication flows, API reliability, and production DevOps.
+            Architecting secure scalable servers, asynchronous RESTful APIs, middleware pipelines, authentication flows, API reliability and production DevOps.
           </p>
           <div className="skills-tech-grid">
             {["Node.js", "Express.js", "REST APIs", "Authentication (JWT / OAuth)", "API Reliability", "Production and DevOps"].map((tech) => (
@@ -98,7 +98,7 @@ export function Skills() {
             <h3 className="skills-tab-card__title">Programming Languages</h3>
           </div>
           <p className="skills-tab-card__desc">
-            Foundational problem solving, data structures, and object-oriented architecture built with high performance and type safety.
+            Foundational problem solving, data structures and object-oriented programming built with high performance and safety.
           </p>
           <div className="skills-tech-grid">
             {["C++", "Java", "JavaScript", "Python"].map((tech) => (
@@ -118,7 +118,7 @@ export function Skills() {
             <h3 className="skills-tab-card__title">Databases & Persistence</h3>
           </div>
           <p className="skills-tab-card__desc">
-            Designing flexible document schemas, indexing pipelines, aggregation queries, and relational/NoSQL persistence with MongoDB, Mongoose & MySQL.
+            Designing flexible document schemas, indexing pipelines, aggregation queries and relational/NoSQL persistence with MongoDB, Mongoose & MySQL.
           </p>
           <div className="skills-tech-grid">
             {["MongoDB", "Mongoose", "MySQL"].map((tech) => (
@@ -158,7 +158,7 @@ export function Skills() {
             <h3 className="skills-tab-card__title">AI & Advanced Technologies</h3>
           </div>
           <p className="skills-tab-card__desc">
-            Building intelligent web applications with LLM integration, OpenAI APIs, RAG systems, prompt engineering, and automated AI workflows.
+            Building intelligent web applications with LLM integration, OpenAI APIs, RAG systems, prompt engineering and automated AI workflows.
           </p>
           <div className="skills-tech-grid">
             {["LLM Integration", "OpenAI APIs", "RAG systems", "Prompt Engineering", "AI workflows"].map((tech) => (
@@ -229,7 +229,7 @@ export function Skills() {
         <div className="skills__header">
           <h2 className="skills__title">Skills & Stack</h2>
           <p className="skills__subtitle">
-            Explore my core domain expertise across frontend, backend, programming languages, databases, containerization tools, AI integrations, computer science concepts, and soft skills.
+            Explore my core domain expertise across frontend, backend, programming languages, databases, containerization tools, AI integrations, computer science concepts and soft skills.
           </p>
         </div>
 
