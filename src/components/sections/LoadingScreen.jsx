@@ -11,8 +11,6 @@ export function LoadingScreen({ onComplete }) {
     "Loading Projects...",
     "Fetching Experience...",
     "Loading Skills...",
-    "Connecting GitHub...",
-    "Loading Resume...",
     "Portfolio Ready.",
   ];
 
@@ -21,7 +19,7 @@ export function LoadingScreen({ onComplete }) {
   const handleTerminalFinished = () => {
     setTimeout(() => {
       setIsVisible(false);
-    }, 400);
+    }, 100);
   };
 
   return (
@@ -37,8 +35,8 @@ export function LoadingScreen({ onComplete }) {
             <Terminal
               commands={commands}
               outputs={outputs}
-              typingSpeed={20}
-              delayBetweenCommands={250}
+              typingSpeed={15}
+              delayBetweenCommands={125}
               onComplete={handleTerminalFinished}
             />
           </div>
