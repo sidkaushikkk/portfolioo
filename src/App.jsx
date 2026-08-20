@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LoadingScreen } from "@/components/sections/LoadingScreen";
 import { Navbar } from "@/components/sections/Navbar";
@@ -50,6 +51,7 @@ export default function App() {
           {/* 10. Footer */}
           <Footer />
         </main>
+        <Analytics />
       </div>
     </ThemeProvider>
   );
