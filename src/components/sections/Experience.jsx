@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { EXPERIENCES } from "@/data/portfolioData";
 import { TechBadge } from "@/components/ui/TechBadge";
@@ -7,8 +7,55 @@ import { cn } from "@/lib/utils";
 import "./Experience.css";
 
 export function Experience() {
-  // No card open by default (expands ONLY on hover)
+  // No card open by default
   const [activeId, setActiveId] = useState(null);
+  const [isHoverCapable, setIsHoverCapable] = useState(true);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    setIsHoverCapable(mediaQuery.matches);
+
+    const handleMediaChange = (e) => {
+      setIsHoverCapable(e.matches);
+    };
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleMediaChange);
+      return () => mediaQuery.removeEventListener("change", handleMediaChange);
+    } else if (mediaQuery.addListener) {
+      mediaQuery.addListener(handleMediaChange);
+      return () => mediaQuery.removeListener(handleMediaChange);
+    }
+  }, []);
+
+  const handleCardMouseEnter = (id) => {
+    if (isHoverCapable) {
+      setActiveId(id);
+    }
+  };
+
+  const handleGridMouseLeave = () => {
+    if (isHoverCapable) {
+      setActiveId(null);
+    }
+  };
+
+  const handleCardClick = (id) => {
+    if (isHoverCapable) {
+      setActiveId(id);
+    } else {
+      setActiveId((prev) => (prev === id ? null : id));
+    }
+  };
+
+  const handleCardKeyDown = (e, id) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setActiveId((prev) => (prev === id ? null : id));
+    }
+  };
 
   return (
     <section id="experience" className="experience__section">
@@ -17,14 +64,14 @@ export function Experience() {
         <div className="experience__header">
           <h2 className="experience__title">Experience</h2>
           <p className="experience__subtitle">
-            Hover over the cards to see where I’ve worked, contributed and built real-world software.
+            {isHoverCapable ? "Hover over" : "Click on"} the cards to see where I’ve worked, contributed and built real-world software.
           </p>
         </div>
 
-        {/* Skiper52 Expand-on-Hover Internship Cards */}
+        {/* Skiper52 Expandable Internship Cards */}
         <div
           className="experience__grid"
-          onMouseLeave={() => setActiveId(null)}
+          onMouseLeave={handleGridMouseLeave}
         >
           {EXPERIENCES.map((exp) => {
             const isExpanded = activeId === exp.id;
@@ -37,18 +84,17 @@ export function Experience() {
                   duration: 0.65,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                onMouseEnter={() => setActiveId(exp.id)}
-                onClick={() => setActiveId(activeId === exp.id ? null : exp.id)}
-                onFocus={() => setActiveId(exp.id)}
+                onMouseEnter={() => handleCardMouseEnter(exp.id)}
+                onClick={() => handleCardClick(exp.id)}
+                onFocus={() => {
+                  if (isHoverCapable) {
+                    setActiveId(exp.id);
+                  }
+                }}
                 tabIndex={0}
                 role="button"
                 aria-expanded={isExpanded}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setActiveId(activeId === exp.id ? null : exp.id);
-                  }
-                }}
+                onKeyDown={(e) => handleCardKeyDown(e, exp.id)}
                 className={cn(
                   "experience__card",
                   isExpanded ? "experience__card--expanded" : "experience__card--collapsed"
@@ -64,7 +110,7 @@ export function Experience() {
                       <p className="experience__collapsed-role">{exp.role}</p>
                     </div>
                     <div className="experience__collapsed-prompt">
-                      <span>Hover to expand</span>
+                      <span>{isHoverCapable ? "Hover to expand" : "Click to expand"}</span>
                       <ChevronRight className="h-4 w-4" />
                     </div>
                   </div>

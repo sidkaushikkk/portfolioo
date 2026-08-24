@@ -187,13 +187,15 @@
     padding: 1.25rem 1rem;
   }
 
-  .experience__card--collapsed:hover {
-    opacity: 1;
-    border-color: rgba(0, 0, 0, 0.2);
-  }
+  @media (hover: hover) and (pointer: fine) {
+    .experience__card--collapsed:hover {
+      opacity: 1;
+      border-color: rgba(0, 0, 0, 0.2);
+    }
 
-  .dark .experience__card--collapsed:hover {
-    border-color: rgba(200, 173, 141, 0.3);
+    .dark .experience__card--collapsed:hover {
+      border-color: rgba(200, 173, 141, 0.3);
+    }
   }
 }
 
