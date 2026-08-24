@@ -327,7 +327,9 @@
   text-align: center;
   width: 100%;
   transform: translateY(clamp(-0.5rem, -1.2vw, -1.25rem));
-  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
+  paint-order: stroke fill;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6), 0 4px 25px rgba(0, 0, 0, 0.5);
   opacity: 0.85;
 }
 
@@ -564,10 +566,20 @@
   line-height: 1;
   /* margin-bottom drives DEVELOPER up from card bottom; scales with vw */
   margin-bottom: clamp(0.25rem, 2.5vw, 3rem);
+  /* Shift 50px upwards on mobile to be closer to SOFTWARE text */
+  transform: translateY(-50px);
   background: linear-gradient(to right, #e5d4c0, #c8ad8d, #b89975);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.45);
+  paint-order: stroke fill;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.7)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+}
+
+@media (min-width: 640px) {
+  .hero-role-title {
+    transform: none;
+  }
 }
 
 /* DESKTOP: restore original margin-bottom exactly */
