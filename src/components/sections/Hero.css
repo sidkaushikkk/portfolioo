@@ -401,13 +401,6 @@
   }
 }
 
-@media (min-width: 768px) {
-  .hero-portrait-img {
-    height: 130vh;
-    transform: scale(2.2);
-  }
-}
-
 @media (min-width: 1024px) {
   .hero-portrait-img {
     height: 130vh;

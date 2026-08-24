@@ -14,16 +14,29 @@ export const DraggableCardContainer = React.forwardRef(({ children, className },
   );
 });
 
-export function DraggableCardBody({ children, className, dragConstraints, style, onPointerDown, onDragStart, ...props }) {
+export function DraggableCardBody({
+  children,
+  className,
+  dragConstraints,
+  style,
+  onDragStart,
+  onDragEnd,
+  drag = true,
+  initial,
+  ...props
+}) {
   return (
     <motion.div
-      drag
+      drag={drag}
       dragConstraints={dragConstraints}
-      dragElastic={0.1}
-      whileDrag={{ scale: 1.08, cursor: "grabbing" }}
-      whileHover={{ scale: 1.03 }}
-      onPointerDown={onPointerDown}
+      dragElastic={0.2}
+      dragMomentum={true}
+      whileDrag={{ scale: 1.06, cursor: "grabbing", zIndex: 100 }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+      initial={initial}
       style={style}
       className={cn("draggable-card__body", className)}
       {...props}

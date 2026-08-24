@@ -1,13 +1,48 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { DraggableCardContainer, DraggableCardBody } from "@/components/ui/draggable-card";
 import { DRAGGABLE_ABOUT_ITEMS } from "@/data/portfolioData";
 import { Sparkles, Move } from "lucide-react";
 import "./About.css";
 
+const CARD_ROTATIONS = {
+  desktop: {
+    hackathon: -4,
+    mern: 6,
+    ai: -8,
+    "problem-solver": 5,
+    leetcode: -3,
+    coffee: 7,
+  },
+  mobile: {
+    hackathon: -3,
+    mern: 3,
+    ai: 2,
+    "problem-solver": -3,
+    leetcode: -2,
+    coffee: 3,
+  },
+};
+
 export function About() {
   const containerRef = useRef(null);
-  const [activeZIndex, setActiveZIndex] = useState(10);
+  const [activeZIndex, setActiveZIndex] = useState(20);
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth >= 1024;
+    }
+    return true;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [cardZIndices, setCardZIndices] = useState(() => {
     const initial = {};
     DRAGGABLE_ABOUT_ITEMS.forEach((item, index) => {
@@ -16,7 +51,7 @@ export function About() {
     return initial;
   });
 
-  const bringToFront = (id) => {
+  const bringToFront = useCallback((id) => {
     setActiveZIndex((prevMax) => {
       const nextMax = prevMax + 1;
       setCardZIndices((prev) => ({
@@ -25,7 +60,7 @@ export function About() {
       }));
       return nextMax;
     });
-  };
+  }, []);
 
   return (
     <section id="about" className="about__section">
@@ -54,39 +89,56 @@ export function About() {
               </span>
             </div>
 
-            {DRAGGABLE_ABOUT_ITEMS.map((item) => (
-              <DraggableCardBody
-                key={item.id}
-                dragConstraints={containerRef}
-                style={{ "--about-card-z-index": cardZIndices[item.id] || 10 }}
-                onPointerDown={() => bringToFront(item.id)}
-                onDragStart={() => bringToFront(item.id)}
-                className={`about__draggable-card ${item.className}`}
-              >
-                <div className={`about__card-inner about__card-inner--${item.id}`}>
-                  {item.image && (
-                    <div className="about__card-image-wrapper">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        draggable={false}
-                        className="about__card-image"
-                      />
-                      <div className="about__card-image-overlay" />
+            {DRAGGABLE_ABOUT_ITEMS.map((item) => {
+              const rotation = isDesktop
+                ? CARD_ROTATIONS.desktop[item.id] || 0
+                : CARD_ROTATIONS.mobile[item.id] || 0;
+              const cleanClassName = (item.className || "")
+                .replace(/rotate-\[.*?\]/g, "")
+                .replace(/right-\[.*?\]/g, "")
+                .trim();
+
+              return (
+                <DraggableCardBody
+                  key={item.id}
+                  drag={true}
+                  dragConstraints={containerRef}
+                  initial={{ rotate: rotation }}
+                  style={{
+                    zIndex: cardZIndices[item.id] || 10,
+                    rotate: rotation,
+                  }}
+                  onDragStart={() => bringToFront(item.id)}
+                  onDragEnd={() => bringToFront(item.id)}
+                  className={`about__draggable-card about__draggable-card--${item.id} ${cleanClassName}`}
+                >
+                  <div className={`about__card-inner about__card-inner--${item.id}`}>
+                    {item.image && (
+                      <div className="about__card-image-wrapper">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          draggable={false}
+                          className="about__card-image"
+                        />
+                        <div className="about__card-image-overlay" />
+                      </div>
+                    )}
+                    <h3 className="about__card-title">
+                      {item.title}
+                    </h3>
+                    <p className="about__card-subtitle">
+                      {item.subtitle}
+                    </p>
+                    <div className="about__card-footer">
+                      <span className="about__card-footer-label">
+                        {isDesktop ? "DRAG THE CARD OVER THIS CONSOLE" : "DRAG CARD"}
+                      </span>
                     </div>
-                  )}
-                  <h3 className="about__card-title">
-                    {item.title}
-                  </h3>
-                  <p className="about__card-subtitle">
-                    {item.subtitle}
-                  </p>
-                  <div className="about__card-footer">
-                    <span className="about__card-footer-label">DRAG THE CARD OVER THIS CONSOLE</span>
                   </div>
-                </div>
-              </DraggableCardBody>
-            ))}
+                </DraggableCardBody>
+              );
+            })}
           </DraggableCardContainer>
         </div>
       </div>
