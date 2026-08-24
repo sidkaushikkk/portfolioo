@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FloatingDock } from "@/components/ui/floating-dock";
-import { ResumeModal } from "@/components/ResumeModal";
 import { useTheme } from "@/context/ThemeContext";
 import {
   Home,
@@ -13,7 +12,6 @@ import {
   Mail,
   Github,
   Linkedin,
-  Code,
   FileText,
   Sun,
   Moon,
@@ -23,7 +21,6 @@ import { PERSONAL_INFO } from "@/data/portfolioData";
 import "./Navbar.css";
 
 export function Navbar() {
-  const [resumeModalOpen, setResumeModalOpen] = useState(false);
   const [showDock, setShowDock] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -91,7 +88,9 @@ export function Navbar() {
     {
       title: "Resume",
       icon: <FileText className="navbar__icon navbar__icon--purple" />,
-      onClick: () => setResumeModalOpen(true),
+      href: "/SidhantKaushik_Resume.pdf",
+      target: "_blank",
+      rel: "noopener noreferrer",
     },
     {
       title: getThemeTitle(),
@@ -101,23 +100,20 @@ export function Navbar() {
   ];
 
   return (
-    <>
-      <AnimatePresence>
-        {showDock && (
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 40, scale: 0.95 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="navbar__dock-wrapper"
-          >
-            <div className="navbar__dock-container">
-              <FloatingDock items={navItems} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <ResumeModal open={resumeModalOpen} onOpenChange={setResumeModalOpen} />
-    </>
+    <AnimatePresence>
+      {showDock && (
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 40, scale: 0.95 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="navbar__dock-wrapper"
+        >
+          <div className="navbar__dock-container">
+            <FloatingDock items={navItems} />
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

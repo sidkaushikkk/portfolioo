@@ -53,8 +53,8 @@ function FloatingDockMobile({ items, className }) {
                   <a
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    target={item.href?.startsWith("http") ? "_blank" : "_self"}
-                    rel="noreferrer"
+                    target={item.target || (item.href?.startsWith("http") ? "_blank" : "_self")}
+                    rel={item.rel || (item.href?.startsWith("http") ? "noopener noreferrer" : undefined)}
                     className="floating-dock-mobile__item"
                   >
                     <div className="floating-dock-mobile__icon-box">
@@ -94,7 +94,7 @@ function FloatingDockDesktop({ items, className }) {
   );
 }
 
-function IconContainer({ mouseX, title, icon, href, onClick }) {
+function IconContainer({ mouseX, title, icon, href, onClick, target, rel }) {
   let ref = useRef(null);
 
   let distance = useTransform(mouseX, (val) => {
@@ -147,8 +147,8 @@ function IconContainer({ mouseX, title, icon, href, onClick }) {
   return (
     <a
       href={href}
-      target={href?.startsWith("http") ? "_blank" : "_self"}
-      rel="noreferrer"
+      target={target || (href?.startsWith("http") ? "_blank" : "_self")}
+      rel={rel || (href?.startsWith("http") ? "noopener noreferrer" : undefined)}
       className="floating-dock__link-reset"
     >
       {content}
