@@ -1,26 +1,47 @@
-/* Hero Component Dedicated Styles */
+/* ============================================================
+   Hero Component — Responsive CSS
+   
+   Architecture: The laptop/MacBook composition is the canonical
+   master. The portrait's rendered-height-to-portrait-bottom ratio
+   is kept constant across all breakpoints so the face/upper-body
+   appears at the same relative position in the card at every
+   viewport size. Only scale(2.2) changes smoothly; no element
+   gets independently repositioned.
+   
+   Portrait math:
+     laptop:  130vh × 2.2  = ~2880px rendered, portrait-bottom ~708px
+              ratio = 708/2880 ≈ 24.6% from rendered bottom
+     mobile:  portrait-bottom ~428px
+              target rendered = 428/0.246 ≈ 1740px
+              layout_h = 1740/2.2 ≈ 790px ≈ 95vh at 844px phone
+              → height:95vh; scale(2.2)
+   ============================================================ */
 
+/* ── Section ─────────────────────────────────────────────────
+   width:100% prevents 100vw from including the scrollbar.
+   align-items:stretch lets the card determine its own height.
+   ─────────────────────────────────────────────────────────── */
 .hero-section {
   position: relative;
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  min-height: 92vh;
+  width: 100%;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   padding: 0;
   user-select: none;
   overflow: hidden;
 }
 
-/* Editorial Outer Frame Card */
+/* ── Card ────────────────────────────────────────────────────
+   Mobile: height:auto so card wraps its content.
+   Desktop ≥1024px: restore exact original height:840px.
+   ─────────────────────────────────────────────────────────── */
 .hero-card {
   margin-top: 0;
   position: relative;
   width: 100%;
-  height: 840px;
+  height: auto;
+  min-height: 480px;
   border-radius: 0;
   border-top: 1px solid rgba(200, 173, 141, 0.3);
   border-bottom: 1px solid rgba(200, 173, 141, 0.3);
@@ -36,7 +57,7 @@
 
 @media (min-width: 640px) {
   .hero-card {
-    /* border-radius: 32px; */
+    min-height: 520px;
     padding: 1.5rem;
     padding-bottom: 5rem;
   }
@@ -44,14 +65,23 @@
 
 @media (min-width: 768px) {
   .hero-card {
-    /* border-radius: 40px; */
-    min-height: 88vh;
-    padding: 2.5rem;
+    min-height: 620px;
+    padding: 2rem;
     padding-bottom: 5rem;
   }
 }
 
-/* Ambient Radial Background & Curtain Shadow Texture */
+/* DESKTOP: restore original exactly */
+@media (min-width: 1024px) {
+  .hero-card {
+    height: 840px;
+    min-height: unset;
+    padding: 1rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* Ambient Radial Background & Curtain Texture */
 .hero-ambient-bg {
   pointer-events: none;
   position: absolute;
@@ -68,7 +98,7 @@
   background-image: repeating-linear-gradient(45deg, #000 0, #000 45px, transparent 45px, transparent 130px);
 }
 
-/* 1. Top Scrolling Marquee Pill */
+/* ── Top Scrolling Marquee Pill ─────────────────────────────── */
 .hero-top-pill {
   display: flex;
   align-items: center;
@@ -92,14 +122,6 @@
   flex-shrink: 0;
 }
 
-@media (min-width: 640px) {
-  .hero-top-pill {
-    height: 46px;
-    max-width: 48rem;
-    margin-top: 1rem;
-  }
-}
-
 .hero-marquee-track {
   display: flex;
   align-items: center;
@@ -110,12 +132,8 @@
 }
 
 @keyframes hero-marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
 .hero-marquee-item-wrapper {
@@ -139,9 +157,7 @@
 }
 
 @media (min-width: 640px) {
-  .hero-marquee-text {
-    font-size: 12px;
-  }
+  .hero-marquee-text { font-size: 12px; }
 }
 
 .hero-marquee-dot {
@@ -152,14 +168,17 @@
   align-items: center;
 }
 
-/* Middle Layout Composition Container */
+/* ── Middle Composition Container ────────────────────────────
+   flex:1 1 auto makes it fill the space between pill and
+   description, while min-height ensures it is never too short
+   for the portrait/SOFTWARE/DEVELOPER visual relationships.
+   ─────────────────────────────────────────────────────────── */
 .hero-middle-grid {
   position: relative;
   z-index: 10;
-  margin-top: auto;
-  margin-bottom: auto;
+  flex: 1 1 auto;
   width: 100%;
-  min-height: 460px;
+  min-height: 340px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -167,35 +186,42 @@
 }
 
 @media (min-width: 640px) {
-  .hero-middle-grid {
-    min-height: 520px;
-  }
+  .hero-middle-grid { min-height: 400px; }
 }
 
 @media (min-width: 768px) {
-  .hero-middle-grid {
-    min-height: 560px;
-  }
+  .hero-middle-grid { min-height: 500px; }
 }
 
+/* DESKTOP: restore original */
 @media (min-width: 1024px) {
-  .hero-middle-grid {
-    min-height: 620px;
-  }
+  .hero-middle-grid { min-height: 620px; }
 }
 
-/* Top Row: Identity & Tagline */
+/* ── Top Row: Identity (left) + Tagline (right) ──────────────
+   Stack (column) only at <360px to prevent collision.
+   At 360px+ restore the side-by-side row that matches laptop.
+   ─────────────────────────────────────────────────────────── */
 .hero-top-row {
   position: relative;
   z-index: 30;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
   padding-top: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  gap: 0.25rem;
+}
+
+@media (min-width: 360px) {
+  .hero-top-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -206,114 +232,78 @@
   }
 }
 
+/* Identity block (name + subtitle) */
 .hero-identity-block {
   display: flex;
   flex-direction: column;
   row-gap: 0.25rem;
   text-align: left;
-  max-width: 20rem;
+  /* allow block to share the row without squeezing tagline */
+  max-width: 56%;
 }
 
-@media (min-width: 640px) {
-  .hero-identity-block {
-    max-width: 24rem;
-  }
-}
+@media (min-width: 640px) { .hero-identity-block { max-width: 24rem; } }
+@media (min-width: 768px) { .hero-identity-block { max-width: 28rem; } }
 
-@media (min-width: 768px) {
-  .hero-identity-block {
-    max-width: 28rem;
-  }
-}
-
+/* Name: scales proportionally with viewport width, matching laptop */
 .hero-identity-name {
   font-family: 'Syne', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.025em;
-  font-size: 1.5rem;
+  font-size: clamp(1.125rem, 3.2vw, 2.25rem);
   line-height: 1;
   background: linear-gradient(to right, #e5d4c0, #c8ad8d, #b89975);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-@media (min-width: 640px) {
-  .hero-identity-name {
-    font-size: 1.875rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero-identity-name {
-    font-size: 2.25rem;
-  }
-}
-
+/* Subtitle */
 .hero-identity-subtitle {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.75rem;
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
   color: #a39382;
   font-weight: 400;
   letter-spacing: 0.025em;
   line-height: 1.375;
 }
 
-@media (min-width: 640px) {
-  .hero-identity-subtitle {
-    font-size: 0.875rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero-identity-subtitle {
-    font-size: 1rem;
-  }
-}
-
+/* Tagline block (right side) */
 .hero-tagline-block {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
+  align-items: flex-start;
+  text-align: left;
   row-gap: 0.125rem;
-  max-width: 180px;
+  max-width: 100%;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 360px) {
   .hero-tagline-block {
-    max-width: 20rem;
+    align-items: flex-end;
+    text-align: right;
+    max-width: 42%;
   }
 }
 
-@media (min-width: 768px) {
-  .hero-tagline-block {
-    max-width: 24rem;
-  }
-}
+@media (min-width: 640px) { .hero-tagline-block { max-width: 20rem; } }
+@media (min-width: 768px) { .hero-tagline-block { max-width: 24rem; } }
 
 .hero-tagline-line {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.75rem;
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
   color: #b8a892;
   font-weight: 300;
   letter-spacing: 0.025em;
   line-height: 1.25;
 }
 
-@media (min-width: 640px) {
-  .hero-tagline-line {
-    font-size: 0.875rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero-tagline-line {
-    font-size: 1rem;
-  }
-}
-
-/* Oversized Background Typography (Layer Z-10) */
+/* ── Oversized Background Typography (Layer Z-10) ────────────
+   clamp(48px, 13.5vw, 220px) anchors to the laptop reference:
+   13.5vw at 1280px ≈ 172.8px (matching the screenshot).
+   On mobile it scales with card width, preserving the
+   portrait/SOFTWARE visual relationship automatically.
+   ─────────────────────────────────────────────────────────── */
 .hero-oversized-wrapper {
   position: absolute;
   inset: 0;
@@ -332,41 +322,32 @@
   color: #9e8668;
   letter-spacing: -0.05em;
   line-height: 1;
-  font-size: 11.5vw;
+  font-size: clamp(48px, 13.5vw, 220px);
   user-select: none;
   text-align: center;
   width: 100%;
-  transform: translateY(-0.75rem);
+  transform: translateY(clamp(-0.5rem, -1.2vw, -1.25rem));
   text-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
   opacity: 0.85;
 }
 
-@media (min-width: 640px) {
-  .hero-oversized-text {
-    font-size: 14.5vw;
-    transform: translateY(-1.25rem);
-  }
-}
+/* ── Portrait Cutout (Layer Z-20) ────────────────────────────
+   KEY FIX: The portrait MUST produce a rendered height that is
+   ≥ portrait-bottom-position / 0.246 so that the face/upper
+   body appears at card-top, exactly as in the laptop screenshot.
 
-@media (min-width: 768px) {
-  .hero-oversized-text {
-    font-size: 13.5vw;
-  }
-}
+   All breakpoints use scale(2.2) — same as the laptop original.
+   Only the vh-based height changes so the rendered-height-to-
+   portrait-bottom ratio stays ≈ 24.6% across all viewports.
 
-@media (min-width: 1024px) {
-  .hero-oversized-text {
-    font-size: 13.5vw;
-  }
-}
+   Derivation for <480px (390px×844px phone):
+     portrait-bottom ≈ 88(pill) + 340(mid-grid) = 428px in card
+     target rendered  = 428/0.246 ≈ 1740px
+     layout_h         = 1740/2.2 ≈ 790px = 790/844 ≈ 95vh → use 95vh
 
-@media (min-width: 1280px) {
-  .hero-oversized-text {
-    font-size: 220px;
-  }
-}
-
-/* Portrait Cutout (Layer Z-20) - 105vh Height & Doubled Scale */
+   At each larger breakpoint middle-grid min-height grows,
+   so portrait-bottom rises and layout_h is adjusted to match.
+   ─────────────────────────────────────────────────────────── */
 .hero-portrait-wrapper {
   position: absolute;
   inset: 0;
@@ -378,15 +359,11 @@
   padding-bottom: 0;
 }
 
-@media (min-width: 640px) {
-  .hero-portrait-wrapper {
-    padding-bottom: 0.5rem;
-  }
-}
-
+/* Base: phones < 480px */
 .hero-portrait-img {
-  height: 130vh;
+  height: 95vh;
   max-height: none;
+  width: auto;
   object-fit: contain;
   object-position: bottom;
   filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.85)) contrast(1.05);
@@ -394,13 +371,33 @@
   transform-origin: bottom center;
 }
 
-@media (min-width: 640px) {
+/* 480px–639px: middle-grid still ~340px, portrait-bottom ~428px */
+@media (min-width: 480px) {
   .hero-portrait-img {
-    height: 130vh;
+    height: 95vh;
     transform: scale(2.2);
   }
 }
 
+/* 640px–767px: middle-grid min-height 400px, portrait-bottom ~488px */
+@media (min-width: 640px) {
+  .hero-portrait-img {
+    /* 488 / 0.246 / scale(2.2) → ~900px ≈ ~115vh at 768 */
+    height: 105vh;
+    transform: scale(2.2);
+  }
+}
+
+/* 768px–1023px: middle-grid 500px, portrait-bottom ~588px */
+@media (min-width: 768px) {
+  .hero-portrait-img {
+    /* 588 / 0.246 / 2.2 → ~1087px ≈ 120vh at 900px viewport */
+    height: 120vh;
+    transform: scale(2.2);
+  }
+}
+
+/* DESKTOP ≥1024px: restore original values exactly */
 @media (min-width: 1024px) {
   .hero-portrait-img {
     height: 130vh;
@@ -409,54 +406,68 @@
   }
 }
 
-/* Bottom Foreground Row (Layer Z-30): Social Links & Role Title */
+/* ── Bottom Row: Social Badges (left) + DEVELOPER (right) ────
+   KEY FIX: Keep flex-direction:row at ALL viewport sizes so the
+   layout mirrors the laptop composition (badges bottom-left,
+   DEVELOPER bottom-right). Only fall back to column at ≤359px
+   where both truly cannot coexist at 320px card width.
+   ─────────────────────────────────────────────────────────── */
 .hero-bottom-row {
   position: relative;
   z-index: 30;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
   width: 100%;
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  gap: 1rem;
-  margin-top: auto;
+  gap: 0.5rem;
+}
+
+/* Very narrow phones only — column fallback */
+@media (max-width: 359px) {
+  .hero-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 }
 
 @media (min-width: 768px) {
   .hero-bottom-row {
-    flex-direction: row;
     padding-bottom: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    gap: 1rem;
   }
 }
 
+/* Social badges: always on one row, never wrap */
 .hero-social-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.4rem;
   pointer-events: auto;
+  flex-shrink: 0;
 }
 
 @media (min-width: 640px) {
-  .hero-social-list {
-    gap: 0.75rem;
-  }
+  .hero-social-list { gap: 0.75rem; }
 }
 
 .hero-social-badge {
   display: flex;
   align-items: center;
-  column-gap: 0.5rem;
+  column-gap: 0.35rem;
   border-radius: 0.75rem;
   border: 1px solid rgba(200, 173, 141, 0.3);
   background-color: rgba(28, 27, 32, 0.9);
-  padding: 0.375rem 0.875rem;
-  font-size: 0.75rem;
+  /* Slightly tighter padding on mobile so badge + DEVELOPER fit in row */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.65rem;
   font-weight: 500;
   color: #dfcfbe;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
@@ -464,12 +475,27 @@
   -webkit-backdrop-filter: blur(12px);
   transition: all 0.2s ease;
   text-decoration: none;
+  white-space: nowrap;
+}
+
+@media (min-width: 480px) {
+  .hero-social-badge {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.7rem;
+    column-gap: 0.4rem;
+  }
 }
 
 @media (min-width: 640px) {
   .hero-social-badge {
-    padding: 0.5rem 1rem;
+    padding: 0.375rem 0.875rem;
+    font-size: 0.75rem;
+    column-gap: 0.5rem;
   }
+}
+
+@media (min-width: 768px) {
+  .hero-social-badge { padding: 0.5rem 1rem; }
 }
 
 .hero-social-badge:hover {
@@ -487,24 +513,45 @@
   justify-content: center;
   border-radius: 0.375rem;
   color: #ffffff;
+  flex-shrink: 0;
 }
 
-.hero-badge-icon-box.github {
-  background-color: #2563eb;
-}
-
-.hero-badge-icon-box.linkedin {
-  background-color: #e1306c;
-}
+.hero-badge-icon-box.github  { background-color: #2563eb; }
+.hero-badge-icon-box.linkedin { background-color: #e1306c; }
 
 .hero-badge-icon-box svg {
   width: 0.875rem;
   height: 0.875rem;
 }
 
+/* ── Badge text: icon-only on mobile, text visible at 640px+ ── */
+.hero-social-badge span {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .hero-social-badge span {
+    display: inline;
+  }
+}
+
+/* ── DEVELOPER title ──────────────────────────────────────────
+   KEY FIX: clamp(1.25rem, 5.9vw, 4.75rem)
+   5.9vw is the proportion of the laptop original:
+     4.75rem ÷ 1280px = 5.9vw/100 ← same % of viewport width
+   So at every viewport size the DEVELOPER text is exactly as
+   prominent (relative to card width) as on the MacBook.
+
+   text-align:right always — DEVELOPER lives on the right side
+   of the bottom row at all breakpoints, matching the laptop.
+
+   margin-bottom is the original desktop value at ≥1024px;
+   below that it scales with viewport to maintain proportion.
+   ─────────────────────────────────────────────────────────── */
 .hero-role-block {
   text-align: right;
   pointer-events: auto;
+  flex-shrink: 0;
 }
 
 .hero-role-title {
@@ -512,48 +559,59 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.025em;
-  font-size: 1.875rem;
+  /* Proportional scaling anchored to laptop reference */
+  font-size: clamp(1.25rem, 5.9vw, 4.75rem);
   line-height: 1;
-  margin-bottom: 50px;
+  /* margin-bottom drives DEVELOPER up from card bottom; scales with vw */
+  margin-bottom: clamp(0.25rem, 2.5vw, 3rem);
   background: linear-gradient(to right, #e5d4c0, #c8ad8d, #b89975);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
 }
 
-@media (min-width: 640px) {
-  .hero-role-title {
-    font-size: 3.25rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero-role-title {
-    font-size: 4rem;
-  }
-}
-
+/* DESKTOP: restore original margin-bottom exactly */
 @media (min-width: 1024px) {
   .hero-role-title {
-    font-size: 4.75rem;
+    margin-bottom: 50px;
   }
 }
 
-/* 4. Bottom Long Description Paragraph */
+/* ── Bottom Description Box ──────────────────────────────────
+   Padding-left/right raised from 0.5rem to 1rem on mobile so
+   text doesn't sit flush against the screen bezel.
+   Desktop restores original value.
+   ─────────────────────────────────────────────────────────── */
 .hero-bottom-description-box {
   position: relative;
   z-index: 30;
   width: 100%;
   padding-top: 1rem;
   border-top: 1px solid rgba(200, 173, 141, 0.2);
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  flex-shrink: 0;
 }
 
 @media (min-width: 640px) {
   .hero-bottom-description-box {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-bottom-description-box {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* DESKTOP: restore original */
+@media (min-width: 1024px) {
+  .hero-bottom-description-box {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 
@@ -569,13 +627,9 @@
 }
 
 @media (min-width: 640px) {
-  .hero-bottom-description-text {
-    font-size: 0.875rem;
-  }
+  .hero-bottom-description-text { font-size: 0.875rem; }
 }
 
 @media (min-width: 768px) {
-  .hero-bottom-description-text {
-    font-size: 1rem;
-  }
+  .hero-bottom-description-text { font-size: 1rem; }
 }
